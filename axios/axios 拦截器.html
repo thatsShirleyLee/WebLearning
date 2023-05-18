@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios 拦截器</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.3.6/axios.min.js"></script>
+</head>
+<body>
+<script>
+    /*
+    // 设置一个请求拦截器
+    axios.interceptors.request.use(function (config) {
+        console.log('请求拦截器 成功');
+        return config;
+        // throw '参数出问题了'; // 会跳到 响应拦截器失败
+    }, function (error) {
+        console.log('请求拦截器 失败');
+        return Promise.reject(error);
+    });
+
+    // 设置一个响应拦截器
+    axios.interceptors.response.use(function (response) {
+        console.log('响应拦截器 成功');
+        return response;
+    }, function (error) {
+        console.log('响应拦截器 失败');    // 会跳到 自定义回调失败
+        return Promise.reject(error);
+    });
+    // 发送请求
+    axios({
+        method: 'GET',
+        url: 'http://localhost:3000/posts'
+    }).then(response => {
+        // 自定义回调
+        console.log('自定义回调处理成功的结果');
+        // console.log(response);
+    }).catch(reason => {
+        console.log('自定义回调失败');
+    });
+     */
+
+    // 设置两个请求拦截器
+    axios.interceptors.request.use(function (config) {
+        console.log('请求拦截器 成功 - # 1');
+        // 修改 config 参数
+        config.params = {a: 100}; // 在请求拦截器中可以对请求参数进行修改
+        return config;
+    }, function (error) {
+        console.log('请求拦截器 失败 - # 1');
+        return Promise.reject(error);
+    });
+    axios.interceptors.request.use(function (config) {
+        console.log('请求拦截器 成功 - # 2');
+        // 修改 config 参数
+        config.timeout = 2000; // 在请求拦截器中可以对请求参数进行修改
+        return config;
+    }, function (error) {
+        console.log('请求拦截器 失败 - # 2');
+        return Promise.reject(error);
+    });
+
+    // 设置两个响应拦截器
+    axios.interceptors.response.use(function (response) {
+        console.log('响应拦截器 成功 - # 1');
+        console.log(response.data); // 在响应拦截器中处理数据, 直接只返回响应体 (不用 自己处理响应行 响应头)
+        return response;
+    }, function (error) {
+        console.log('响应拦截器 失败 - # 1');
+        return Promise.reject(error);
+    });
+    axios.interceptors.response.use(function (response) {
+        console.log('响应拦截器 成功 - # 2');
+        return response;
+    }, function (error) {
+        console.log('响应拦截器 失败 - # 2');
+        return Promise.reject(error);
+    });
+
+    // 发送请求
+    axios({
+        method: 'GET',
+        url: 'http://localhost:3000/posts'
+    }).then(response => {
+        // 自定义回调
+        console.log('自定义回调处理成功的结果');
+        // console.log(response);
+    }).catch(reason => {
+        console.log('自定义回调失败');
+    });
+
+    // 控制台输出顺序: 2 1 1 2
+</script>
+</body>
+</html>

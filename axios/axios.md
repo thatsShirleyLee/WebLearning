@@ -319,3 +319,11 @@ DELETE /posts/1
   ]
 }
 ```
+## [Interceptors](https://github.com/axios/axios#interceptors)
+> 拦截器
+> * 请求拦截器: 对请求做检查, 类似一个关卡
+> * 响应拦截器: 在发送回来之前, 对数据做一个预处理
+## [Cancellation](https://github.com/axios/axios#cancellation)
+> 取消请求
+> * `json-server db.json --delay` 可以查看 json-server 的 Option 选项
+> * Or `json-server db.json -d 2000` 延时响应
