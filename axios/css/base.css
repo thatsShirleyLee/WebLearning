@@ -1,0 +1,32 @@
+.container {
+    margin-left: 100px;
+}
+
+.page-header {
+    padding: 10px;
+    border-bottom: solid 2px lightgrey;
+}
+
+.btn {
+    width: auto;
+    height: 30px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+
+.btn-primary {
+    background-color: #256098;
+}
+
+.btn-alert {
+    background-color: #f0ab50;
+}
+
+.btn-green {
+    background-color: #55a958;
+}
+
+.btn-danger {
+    background-color: #e4614c;
+}

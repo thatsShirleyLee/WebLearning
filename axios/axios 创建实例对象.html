@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>axios 创建实例对象</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.3.6/axios.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2 class="page-header">基本使用</h2>
+    <button class="btn btn-primary">发送 GET 请求</button>
+    <button class="btn btn-alert">发送 POST 请求</button>
+</div>
+<script>
+    const btns = document.querySelectorAll('button');
+    /*
+     * 使用 axios 创建实例对象, 适用于给不同端口发送请求
+     *  不同端口的 baseURL 以及协议设置不同
+     * 给不同的端口创建一个对应的 实例对象, 使用起来更加方便, 想给谁发就用哪个实例对象
+     */
+    const duanzi = axios.create({
+        baseURL: 'https://api.apiopen.top',
+        timeout: 2000
+    });
+    const another = axios.create({
+        baseURL: 'http://b.com',
+        timeout: 2000
+    })
+    // 这里 duanzi 的功能与 axios 几乎一致
+    console.log(duanzi);
+    // duanzi({
+    //     url: '/getJoken'
+    // }).then(response => {
+    //     console.log(response);
+    // });
+    duanzi.get('/getJoken').then(response => {
+        console.log(response.data); // 打印响应结果
+    });
+</script>
+</body>
+</html>
