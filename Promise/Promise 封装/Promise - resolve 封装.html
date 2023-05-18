@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise - resolve 封装</title>
+    <script src="./promise.js"></script>
+</head>
+<body>
+<script>
+    const p = Promise.resolve('OK');
+    console.log(p);
+    const p2 = Promise.resolve(new Promise((resolve, reject) => {
+        resolve('success');
+    }));
+    console.log(p2);
+</script>
+</body>
+</html>

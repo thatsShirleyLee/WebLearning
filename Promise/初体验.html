@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise</title>
+    <style>
+        .container {
+            margin-left: 100px;
+        }
+
+        .page-header {
+            padding: 10px;
+            border-bottom: solid 2px lightgrey;
+        }
+
+        .btn {
+            width: auto;
+            height: 30px;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-family: sans-serif;
+        }
+
+        .btn-primary {
+            background-color: #256098;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 class="page-header">Promise 初体验</h2>
+    <button id="btn" class="btn btn-primary">点击抽奖</button>
+    <script>
+        // 生成随机数
+        function rand(m, n) {
+            return Math.ceil(Math.random() * (n - m + 1)) + m - 1;
+        }
+
+        /*
+         * 点击按钮, 2s 后显示是否中奖 (30% 概率中奖)
+         *    若中奖 恭喜恭喜, 奖品为10万RMB劳斯莱斯优惠券
+         *    若未中奖弹出  再接再厉
+         */
+        const btn = document.querySelector("#btn");
+        btn.addEventListener('click', () => {
+            // setTimeout(() => {
+            //     let n = rand(1, 100);
+            //     if (n <= 30) {
+            //         alert('恭喜恭喜, 奖品为10万RMB劳斯莱斯优惠券');
+            //     }else {
+            //         alert('再接再厉');
+            //     }
+            // }, 1000);
+
+            // Promise 形式实现
+            /*
+             * resolve 解决 函数类型的数据
+             * reject 拒绝 函数类型的数据
+             */
+            const p = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    let n = rand(1, 100);
+                    if (n <= 30) {
+                        resolve(n);  // 将promise对象的状态设置为 "成功" // alert('恭喜恭喜, 奖品为10万RMB劳斯莱斯优惠券');
+                    }else {
+                        reject(n);   // 将promise对象的状态设置为 "失败" // alert('再接再厉');
+                    }
+                }, 1000);
+            });
+            /*
+             * then()
+             *      接收两个参数
+             *      两个参数都是函数
+             *      参数1: promise对象的状态为 "成功" 时调用
+             *      参数1: promise对象的状态为 "失败" 时调用
+             */
+            p.then( // 指定 成功/失败的 回调函数
+                (value) => {
+                    alert('恭喜恭喜, 奖品为10万RMB劳斯莱斯优惠券 您的中奖数字为' + value);
+                },
+                (reason) => {
+                    alert('再接再厉 您的号码为' + reason);
+                },
+            );
+
+        });
+    </script>
+</div>
+</body>
+</html>

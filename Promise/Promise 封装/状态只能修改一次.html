@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>状态只能修改一次</title>
+    <script src="./promise.js"></script>
+</head>
+<body>
+<script>
+    let p = new Promise((resolve, reject) => {
+        resolve('OK');
+        reject('Err');
+    });
+    console.log(p);
+</script>
+</body>
+</html>

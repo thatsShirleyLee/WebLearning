@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise 指定多个回调</title>
+</head>
+<body>
+<script>
+    // 一个 Promise 指定多个成功/失败回调函数, 都会调用吗?
+    // 当 promise 改变为对应状态时, 都会调用
+    let p = new Promise((resolve, reject) => {
+        resolve('OK');
+    });
+    // 指定回调 -1
+    p.then(value => {
+        console.log(value)
+    });
+    // 指定回调 -2
+    p.then(value => {
+        alert(value)
+    });
+</script>
+</body>
+</html>

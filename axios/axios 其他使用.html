@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios基本使用</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.3.6/axios.min.js"></script>
+    <style>
+        .container {
+            margin-left: 100px;
+        }
+
+        .page-header {
+            padding: 10px;
+            border-bottom: solid 2px lightgrey;
+        }
+
+        .btn {
+            width: auto;
+            height: 30px;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-family: sans-serif;
+        }
+
+        .btn-primary {
+            background-color: #256098;
+        }
+
+        .btn-alert {
+            background-color: #f0ab50;
+        }
+
+        .btn-green {
+            background-color: #55a958;
+        }
+
+        .btn-danger {
+            background-color: #e4614c;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 class="page-header">基本使用</h2>
+    <button class="btn btn-primary">发送 GET 请求</button>
+    <button class="btn btn-alert">发送 POST 请求</button>
+    <button class="btn btn-green">发送 PUT 请求</button>
+    <button class="btn btn-danger">发送 DELETE 请求</button>
+</div>
+<script>
+    // 获取按钮
+    const btn = document.querySelectorAll('button');
+    // 发送 GET 请求
+    btn[0].addEventListener('click', () => {
+        // axios()
+        axios.request({
+            method: 'GET',
+            url: 'http://localhost:3000/comments'
+        }).then(response => {
+            console.log(response);
+        });
+    })
+    // 发送 POST 请求
+    btn[1].addEventListener('click', () => {
+        // axios()
+        /*
+         * post(url[,data[,config]])
+         */
+        axios.post(
+            'http://localhost:3000/comments',
+            {
+                "body": "That is great",
+                "postId": 2
+            }).then(response => {
+            console.log(response);
+        });
+    })
+    // 发送 PUT 请求
+    btn[2].addEventListener("click", () => {
+        // axios()
+    })
+    // 发送 DELETE 请求
+    btn[3].addEventListener("click", () => {
+        // axios()
+    })
+</script>
+</body>
+</html>

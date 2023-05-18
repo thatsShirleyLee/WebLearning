@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise 封装 AJAX</title>
+    <link crossorigin="anonymous"
+          href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap-grid.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="page-header">Promise 封装 AJAX 操作</h2>
+    <button class="btn btn-primary" id="btn">点击发送 AJAX</button>
+</div>
+<script>
+    // 接口地址 https://api.apiopen.top/getJoke
+    // 获取元素
+    const btn = document.querySelector("#btn");
+    btn.addEventListener('click', () => {
+        // 创建Promise对象
+        const p = new Promise((resolve, reject) =>{
+            // 1. 创建对象
+            const x = new XMLHttpRequest();
+            // 2. 初始化
+            x.open('GET', 'https://api.apiopen.top/getJoke');
+            // 3. 发送
+            x.send();
+            // 4. 处理响应
+            x.onreadystatechange = () => {
+                if (x.readyState === 4) {
+                    if (x.status >= 200 && x.status < 300) {
+                        resolve(x.response);
+                        // console.log(x.response); // 成功, 打印响应体
+                    } else {
+                        reject(x.status);
+                        // console.log(x.status); // 失败, 打印状态码
+                    }
+                }
+            };
+        });
+        // 调用then()
+        p.then(value => {
+            console.log(value);
+        }, reason => {
+            console.warn(reason);
+        });
+    });
+</script>
+</body>
+</html>

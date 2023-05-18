@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!--    <meta name="viewport" content="width=devide-width,">-->
+  <title>AJAX GET 请求</title>
+  <style>
+    #result {
+      width: 200px;
+      height: 100px;
+      border: solid 1px #90b;
+    }
+  </style>
+</head>
+<body>
+<div id="result"></div>
+<script>
+  // 绑定键盘按下事件
+  window.onkeydown = () => {
+    // 向服务端发送请求
+    const xhr = new XMLHttpRequest();
+    // 设置响应体数据类型
+    xhr.responseType = 'json';
+    // 初始化
+    xhr.open('GET', 'http://127.0.0.1:8000/json-server');
+    // 发送
+    xhr.send();
+    // 事件绑定
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            // //
+            // console.log(xhr.response);
+            // result.innerHTML = xhr.response;
+            // 手动对字符串进行转换
+            // let data = JSON.parse(xhr.response);
+            // console.log(data);
+            // 自动转换
+            console.log(xhr.response);
+            result.innerHTML = xhr.response.name;
+          }
+      }
+    };
+  };
+</script>
+</body>
+</html>

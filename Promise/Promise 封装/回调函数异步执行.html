@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回调函数异步执行</title>
+    <script src="./promise.js"></script>
+</head>
+<body>
+<script>
+    let p = new Promise((resolve, reject) => {
+        // resolve('OK');
+        reject('Err');
+        console.log(111); // 代码执行结果 111 333 222
+    });
+    p.then(value => {   // 在状态变为成功时, 延迟执行
+        // console.log(value);
+        console.log(222); // 要等同步代码执行完才执行异步的
+    }, reason => {
+        console.log(444);
+    });
+    console.log(333);
+</script>
+</body>
+</html>

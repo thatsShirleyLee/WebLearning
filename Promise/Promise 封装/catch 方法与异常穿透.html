@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>catch 方法与异常穿透</title>
+    <script src="./promise.js"></script>
+</head>
+<body>
+<script>
+    let p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject('OK');
+        }, 1000);
+    });
+    // let res = p.catch(reason => {
+    //     console.log(reason);
+    // })
+    p.then(value => {
+        console.log(111);
+    }).then(value => {
+        console.log(222);
+    }).then(value => {
+        console.log(333);
+    }).catch(reason => {
+        console.warn(reason);
+    })
+</script>
+</body>
+</html>

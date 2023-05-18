@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>改变 Promise 状态和指定回调函数的先后顺序</title>
+</head>
+<body>
+<script>
+    /*
+     * 同步
+     * 先改变状态, 再指定回调时, 回调函数就会调用, 得到数据
+     *
+     * 先改变状态resolve(), 再指定回调函数 then(), 直接调用 value => {}, 得到数据 console.log(value);
+     */
+    let p = new Promise((resolve, reject) => {
+        resolve('OK');
+    });
+    p.then(value => {
+        console.log(value);
+    });
+    /*
+     * 异步
+     * 先指定的回调, 那当状态发生改变时, 回调函数就会调用, 得到数据
+     *
+     * 先指定回调then(), 然后改变状态resolve(), 调用回调函数then(value => {}), 得到数据 console.log(value);
+     */
+    let p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('OK');
+        }, 1000);
+    });
+    p1.then(value => {
+        console.log(value);
+    });
+</script>
+</body>
+</html>

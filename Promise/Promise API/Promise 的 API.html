@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise API</title>
+</head>
+<body>
+<script>
+  const p = new Promise((resolve, reject) => {
+    reject('err');
+  });
+  // 执行 catch 方法
+  p.catch(reason => {
+    console.log(reason)
+  });
+</script>
+</body>
+</html>

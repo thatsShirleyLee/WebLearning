@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>异常穿透</title>
+</head>
+<body>
+<script>
+  let p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('OK');
+      // reject('Err');
+    }, 1000);
+  });
+  p.then(value => {
+    // console.log(111);
+    throw '失败啦!';
+  }).then(value => { // 不需要给下面两个 then 指定失败的回调函数, 因为会穿透使用到catch
+    console.log(222);
+  }).then(value => {
+    console.log(333);
+  }).catch(reason => {
+    console.warn(reason);
+  });
+</script>
+</body>
+</html>

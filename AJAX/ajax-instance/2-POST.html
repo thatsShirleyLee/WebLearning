@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX POST 请求</title>
+    <style>
+        #result {
+            width: 200px;
+            height: 100px;
+            border: solid 1px #903;
+        }
+    </style>
+</head>
+<body>
+<div id="result"></div>
+<script>
+    // 获取元素对象
+    const result = document.getElementById("result");
+    // 绑定事件
+    result.addEventListener("mouseover", () => {
+        // 1. 创建对象
+        const xhr = new XMLHttpRequest();
+        // 2. 初始化 设置类型与URL
+        /*
+         * 请求行的设置
+         */
+        xhr.open('POST', 'http://127.0.0.1:8000/server');
+
+        /*
+         * 请求头的设置
+         * 两个参数
+         *  1. 头的名字
+         *  2. 头的值
+         */
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Content-Type: 设置请求体内容的类型
+        xhr.setRequestHeader('name', 'atguigu'); // 自定义, 会报错(非定义的触发安全机制). 需要在server里进行设置特殊的响应头, 实际工作中由后端人员设置好
+        // 3. 发送
+        /*
+         * 请求体的设置
+         */
+        xhr.send('a=100&b=200&c=300'); // POST请求的参数设置
+
+        // 4. 事件绑定
+        xhr.onreadystatechange = () => {
+            // 对状态进行判断
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    // 处理服务端返回的结果
+                    result.innerHTML = xhr.response;
+                }
+            }
+        };
+    });
+</script>
+</body>
+</html>
