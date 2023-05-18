@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+      #box1{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+      }
+    </style>
+    <script type="text/javascript">
+      window.onload = function() {
+        /*
+         * 当鼠标滚轮向下滚动时,box1变长
+         * 当滚轮向上滚动时,box1变短
+         */
+        // 获取id为box1的div
+        var box1 = document.getElementById("box1");
+        // 为box1绑定一个鼠标滚轮滚动的事件
+        box1.addEventListener("", function() {
+            alert("滚了~~");
+        }, false);
+
+        /*
+         * 使用addEventListener()方法绑定响应函数,取消默认行为时不能使用return false
+         * 需要使用event来取消默认行为
+         *
+         * event.preventDefault();
+         */
+      };
+    </script>
+</head>
+<body>
+<div id="box1"></div>
+</body>
+</html>

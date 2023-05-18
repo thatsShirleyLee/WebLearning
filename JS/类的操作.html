@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .b1 {
+            width: 100px;
+            height: 100px;
+            background-color: #bbffaa;
+        }
+
+        .b2 {
+            /*width: 200px;*/
+            height: 200px;
+            background-color: yellowgreen;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var box = document.getElementById("box");
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function () {
+                /*
+                 * 通过style属性来修改元素的样式, 每修改一个样式,浏览器需要重新渲染一个页面
+                 * 这样的执行性能差, 而且这种形式当要修改多个样式时, 也不太方便
+                 */
+                // box.style.width = "200px";
+                // box.style.height = "200px";
+                // box.style.backgroundColor = "yellow";
+                /*
+                 * 希望一行代码,修改多个样式
+                 * 这样一来,只需要修改一次,即可修改多个样式
+                 *  浏览器只需要重新渲染页面一次, 性能比较好
+                 *  并且这种方式,可以使表现和行为进一步的分离
+                 */
+                // alert(typeof box.className);
+                // 创建一个正则表达式
+                // var reg = /\bb2\b/; // b2要是一个单独的单词, 使用\b单词边界
+                var cn = "b2";
+                addClass(box, cn);
+            };
+
+            /*
+             * 定义一个函数,用于判断对象的class是否含有指定class
+             *
+             * 参数:
+             *  obj: 要判断class属性的对象
+             *  cn: 要查询的class值
+             */
+            function hasClass(obj, cn) {
+                // 判断obj中有没有cn class
+                var reg = new RegExp("\\b"+cn+"\\b");
+                return reg.test(obj.className);
+            };
+
+
+            /*
+             * 定义一个函数,用来向一个元素中添加指定的class属性
+             *
+             * 参数:
+             *  obj: 要添加class属性的元素
+             *  cn: 要添加的class值
+             */
+            function addClass(obj, cn) {
+                // 检查obj中是否含有cn
+                if (!hasClass(obj, cn)) {
+                    obj.className += " "+cn;
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+<button id="btn01">点击按钮以后修改box的样式</button>
+<br/><br/>
+<div id="box" class="b1"></div>
+</body>
+</html>

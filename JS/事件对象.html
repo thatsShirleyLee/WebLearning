@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+      #areaDiv{
+        width: 300px;
+        height: 100px;
+        border: 1px solid black;
+      }
+      #showMsg{
+        margin-top: 20px;
+        width: 300px;
+        height: 30px;
+        border: 1px solid black;
+      }
+    </style>
+    <script type="text/javascript">
+      window.onload = function () {
+        /*
+         * 当鼠标在areaDiv中移动时,在showMsg中显示鼠标的坐标
+         */
+        // 获取两个Div
+        var areaDiv = document.getElementById("areaDiv");
+        var showMsg = document.getElementById("showMsg");
+
+        /*
+         * onmousemove
+         *  - 该事件将会在鼠标移动时被触发
+         *
+         * 事件对象
+         *  - 当事件的响应函数被触发时, 浏览器每次都会将一个事件对象作为参数传递进响应函数
+         *  - 在
+         */
+        areaDiv.onmousemove = function (event) {
+          event = event || window.event; // 兼容性
+          // 获取坐标
+          var  x = event.clientX;
+          var y = event.clientY;
+          // 在showMsg中显示坐标
+          showMsg.innerHTML = "x = "+x+" , "+"y = "+y;
+        };
+      };
+    </script>
+</head>
+<body>
+<div id="areaDiv"></div>
+<div id="showMsg"></div>
+</body>
+</html>

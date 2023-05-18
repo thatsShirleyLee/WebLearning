@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+      window.onload = function() {
+        /*
+         * 键盘事件:
+         *  onkeydown()
+         *    - 按键被按下
+         *    - 如果不松手, 事件会被一直触发
+         *    - onkeydown连续触发时, 第一次核第二次之间会卡一下,后面会很快
+         *      这个是浏览器故意设计的,防止误操作
+         *  onkeyup()
+         *    - 按键被松开
+         * 键盘事件一般都会绑定给一些可以获取到焦点的对象或者时document
+         */
+        document.onkeydown = function(event) {
+            event = event || window.event;
+            /*
+             * 通过keyCode可以判断哪个键被按下了
+             * 除了keyCode, 事件对象中还提供了几个属性
+             *  altKey
+             *  shiftKey
+             *  ctrlKey
+             *      - 这三个用来判断alt ctrl shift是否被按下
+             *          如果被按下则返回true否则返回false
+             */
+            console.log(event.key);
+        };
+        document.onkeyup = function () {
+          console.log("按键被松开");
+        };
+      };
+    </script>
+</head>
+<body>
+<input type="text"/>
+</body>
+</html>

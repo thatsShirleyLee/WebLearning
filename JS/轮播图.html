@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>I ❤️ Xiaoxiao</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*
+         * 用来设置outer的样式
+         */
+        #outer {
+            width: 243px; /* 图片223px宽度 + img margin 10px *2 */
+            height: 284px;
+            /* 居中 */
+            margin: 180px auto;
+            /* 设置背景颜色 */
+            background-color: black;
+            /* 设置padding*/
+            padding: 10px 0;
+            position: relative;
+            /*裁剪溢出内容*/
+            overflow: hidden;
+        }
+
+        #imgList {
+            list-style: none;
+            position: absolute;
+            /*left: -243px;*/
+        }
+
+        #imgList li {
+            /*设置浮动*/
+            float: left;
+            /*设置左右外边距*/
+            margin: 0 10px;
+        }
+
+        img {
+            width: 223px;
+            height: 284px;
+        }
+
+        /*设置导航按钮*/
+        #navDiv {
+            position: absolute;
+            bottom: 15px;
+            left: 71.5px;
+        }
+
+        #navDiv a {
+            /*设置超链接浮动*/
+            float: left;
+            width: 10px;
+            height: 10px;
+            background-color: mediumslateblue;
+            margin: auto 5px;
+            /*设置透明*/
+            opacity: 0.5;
+            /*兼容IE8透明度*/
+            filter: alpha(opacity=50);
+        }
+
+        /*设置鼠标移入的效果*/
+        #navDiv a:hover {
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" src="tools.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            // 获取imgList
+            var imgList = document.getElementById("imgList");
+            // 获取页面中所有的img标签
+            var imgArr = document.getElementsByTagName("img");
+            // 设置imgList的宽度
+            // console.log(imgArr[0].width);
+            imgList.style.width = (imgArr[0].width + 30 * 2) * imgArr.length + "px";
+            // console.log(imgList.style.width);
+
+            // 设置导航按钮居中
+            var outer = document.getElementById("outer");
+            var navDiv = document.getElementById("navDiv");
+            // console.log(navDiv.children[0].style);
+            navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + "px";
+
+            // 设置第一个a的默认样式
+            var allA = document.getElementsByTagName("a");
+            // 设置默认的索引
+            var index = 0;
+            // 设置默认选中的效果
+            allA[index].style.backgroundColor = "white";
+            var timer;
+            /*
+             * 点击超链接按钮，切换图片
+             */
+            // 为所有超链接绑定单击响应函数
+            for (var i = 0; i < allA.length; i++) {
+                allA[i].num = i;
+                allA[i].onclick = function () {
+                    // 关闭自动切换的定时器
+                    clearInterval(timer);
+                    // 获取点击的超链接索引
+                    // alert(this.num);
+                    index = this.num;
+                    // 切换图片
+                    /*
+                     * 第一张left=0
+                     * 第二张left=-243
+                     */
+                    // imgList.style.left = -243 * index + "px";
+                    setA();
+                    // 使用move函数来切换图片
+                    move(imgList, "left", -243 * index, 10, function() {
+                        autoChange();
+                    });
+                };
+            }
+
+            // 自动切换图片
+            autoChange();
+
+            // 创建一个方法来设置选中的a
+            function setA() {
+                if (index >= imgArr.length - 1) {
+                    // 此时是最后一张图,应该切换为第一张
+                    index = 0;
+                    imgList.style.left = 0 + "px";
+                }
+                // 遍历所有的a,并将它们的背景颜色设置为紫色
+                for (var i = 0; i < allA.length; i++) {
+                    allA[i].style.backgroundColor = ""; // 将内联样式删除,样式表的样式将起作用
+                }
+                allA[index].style.backgroundColor = "white";
+            };
+
+            // 创建一个函数,用来开启自动切换图片
+            function autoChange() {
+                // 开启一个定时器,用来定时去切换图片
+                timer = setInterval(function () {
+                    index++;
+                    index %= imgArr.length;
+                    move(imgList, "left", -243 * index, 10, function () {
+                        setA(); // 最后一张之后会立马换到第一张
+                    });
+                }, 1000);
+            };
+        };
+    </script>
+</head>
+<body>
+<!-- 创建一个外部的div, 来作为大的容器 -->
+<div id="outer">
+    <!-- 创建一个ul,用于防止图片 -->
+    <ul id="imgList">
+        <li><img src="xiaoxiaoImages/xiaoxiao-01.jpg"></li>
+        <li><img src="xiaoxiaoImages/xiaoxiao-02.jpg"></li>
+        <li><img src="xiaoxiaoImages/xiaoxiao-03.jpg"></li>
+        <li><img src="xiaoxiaoImages/xiaoxiao-04.jpg"></li>
+        <li><img src="xiaoxiaoImages/xiaoxiao-05.jpg"></li>
+        <li><img src="xiaoxiaoImages/xiaoxiao-01.jpg"></li>
+    </ul>
+    <!--    创建导航按钮-->
+    <div id="navDiv">
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+    </div>
+</div>
+</body>
+</html>

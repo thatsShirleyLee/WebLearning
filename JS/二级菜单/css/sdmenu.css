@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+/* sdmenu */
+
+div.sdmenu {
+    width: 150px;
+    margin: 100px auto;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    padding-bottom: 10px;
+    background: url("imgs/bottom.svg") no-repeat right bottom;
+    border-radius: 10px;
+    overflow: hidden;
+    color: #fff;
+}
+
+div.sdmenu div {
+    /*background: url(title.gif) repeat-x;*/
+    background: url("imgs/triangle-right.png") repeat-x;
+    overflow: hidden;
+}
+
+div.sdmenu div:first-child{
+    /*background: url(toptitle.gif) no-repeat;*/
+    background: url("imgs/toptitle.svg") no-repeat;
+}
+
+div.sdmenu div.collapsed{
+    height: 25px;
+}
+
+div.sdmenu div span{
+    display: block;
+    height: 15px;
+    /*overflow: hidden;*/
+    padding: 5px 25px;
+    font-weight: bold;
+    color: white;
+    background: url("imgs/collapsed.svg") no-repeat 10px center;
+    /*background: linear-gradient(#949492, #393b38);*/
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+div.sdmenu div.collapsed span{
+    background-image: url("imgs/collapsed.svg");
+}
+
+div.sdmenu div a{
+    padding: 5px 10px;
+    background: #eee;
+    display: block;
+    border-bottom: 1px solid #ddd;
+    color: #066;
+}
+
+div.sdmenu div a.current{
+    background: #ccc;
+}
+
+div.sdmenu div a:hover{
+    background: #066 url("imgs/linkarrow.svg") no-repeat right center;
+    color: #fff;
+    text-decoration: none;
+}

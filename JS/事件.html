@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+      /*
+       * 事件:文档或浏览器窗口中发生的一些特定的交互瞬间
+       * Javascript与HTML之间的交互是通过事件实现的
+       * 对于Web应用来说,有下面这些代表性的事件:
+       *  点击某个元素\将鼠标移动至某个元素上方\按下键盘上某个键等等
+       *
+       * 可以在事件对应的属性中设置一些js代码
+       *  这样当事件被触发时,这些代码将会执行
+       */
+      /*
+       * onload事件会在整个页面加载完之后才触发
+       */
+      // 最好写后面,后加载后执行,否则影响页面的加载快慢
+      window.onload = function () {
+        alert("hello");
+      }
+    </script>
+</head>
+<body>
+  <button id="btn" ondblclick="alert('点啥点')">Button</button>
+  <!--
+    结构行为耦合,不推荐
+  -->
+  <script type="text/javascript">
+    /*
+     * 可以为按钮的对应事件绑定处理函数的形式来响应事件
+     */
+    var btn = document.getElementById("btn");
+    // 为按钮绑定一个单击事件
+    // 像这种为单击事件绑定的函数,我们称为单击响应函数
+    /*
+     * 将js代码编写到页面下方,是为了 可以在页面加载完毕以后再执行js代码
+     */
+    btn.onclick = function () {
+      alert("你还点~~");
+    }
+  </script>
+</body>
+</html>
