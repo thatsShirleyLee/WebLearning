@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let</title>
+</head>
+<body>
+<script>
+    // 声明变量
+    let a;
+    let b, c, d;
+    let f = 521, g = 'iloveyou', h = [];
+
+    // 1. 变量不能重复声明
+    // let star = '罗志祥';
+    // let star = '小猪';
+    // var 可以重复声明
+
+    // 2. 块级作用域: 全局, 函数, eval
+    /*
+     * 代码只在 代码块 里面有效
+     * 出了代码块就访问不到
+     *
+     * if else while for 这些语句里面 let 声明的变量
+     * 也只在块级有效
+     */
+    // {
+    //     let girl = '周扬青';
+    // }
+    // console.log(girl);
+    // let 和 var 的区别
+    let items = document.getElementsByClassName('item');
+    // let 块级作用域, 只在块级有效
+    // for (let i = 0; i < items.length; i++) {
+    //     items[i].onclick = function() {
+    //         items[i].style.backgroundColor = 'pink';
+    //     }
+    // }
+
+    // var
+    // for (var i = 0; i < items.length; i++) {
+    //     items[i].onclick = function() {
+    //         this.style.backgroundColor = 'pink';
+    //     }
+    // }
+
+    // 3. 不存在变量提升
+    // console.log(song); // 不会报错, 但会undefined; 相当于在前面 声明 var song;
+    // var song = '恋爱达人';
+
+    // 4. 不影响作用域链
+    {
+        let school = '尚硅谷';
+
+        function fn() {
+            console.log(school); // 会向上一级作用域里找 school
+        }
+
+        fn();
+    }
+</script>
+</body>
+</html>
