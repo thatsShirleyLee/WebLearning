@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise 实践 读取多个文件</title>
+</head>
+<body>
+<script>
+    const fs = require("fs");
+    // 使用 Promise 实现
+    const p = new Promise((resolve, reject) => {
+        fs.readFile("./resource/为学.txt", (err, data) => {
+            resolve(data);
+        });
+    });
+    p.then(value => {
+        return new Promise((resolve, reject) => {
+            fs.readFile("./resource/插秧诗.txt", (err, data) => {
+                resolve([value, data]);
+            });
+        });
+    }).then(value => {
+        return new Promise((resolve, reject) => {
+            fs.readFile("./resource/观书有感.txt", (err, data) => {
+                resolve(value.push(data));
+            });
+        });xxxxx
+    }).then(value => {
+        console.log(value.join('\r\n'));
+    });
+</script>
+</body>
+</html>

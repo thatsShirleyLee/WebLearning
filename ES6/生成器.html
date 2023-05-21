@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生成器</title>
+</head>
+<body>
+<script>
+    // 生成器
+    /*
+     * 生成器函数是 ES6 提供的一种异步编程解决方案, 语法行为与传统函数完全不同
+     *
+     * 是一种特殊的函数
+     * 异步编程,  纯回调函数 node fs ajax mongodb
+     *
+     * 1. 声明时 要加 *
+     * 2. 执行时直接调用不行, 要 .next() 才能执行
+     * 3. 内部可以写 yield 语句, yield 作为函数代码的分隔符
+     */
+    function * gen() {
+        console.log(111);
+        yield '一只没有耳朵';
+        console.log(222);
+        yield '一只没有尾巴';
+        console.log(333);
+        yield '真奇怪';
+        console.log(444);
+        // console.log("hello generator");
+    }
+
+    let iterator = gen();
+    // console.log(iterator);
+    // iterator.next(); // hello generator
+    console.log(iterator.next()); // {value: "一只没有耳朵", done: false}
+    console.log(iterator.next()); // {value: "一只没有尾巴", done: false}
+    console.log(iterator.next()); // {value: "真奇怪", done: false}
+    console.log(iterator.next()); // {value: undefined, done: true}
+    for (let v of gen()) {
+        console.log(v); // 返回 yield 后面的参数 or 字面量; yield 之间的语句也会执行
+    }
+</script>
+</body>
+</html>

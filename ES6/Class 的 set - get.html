@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class 的 set - get</title>
+</head>
+<body>
+<script>
+    // get 和 set
+    class Phone {
+        get price () { // 适合获取动态的值, 比如平均数
+            console.log("价格属性被读取了");
+            return 'iloveyou'; // 返回值就是属性值
+        }
+        set price (newVal) { // 对赋值数据进行类型检查, 不符合类型就失败
+            console.log("价格属性被修改了");
+        }
+    }
+    // 实例化对象
+    let s = new Phone();
+    console.log(s.price); // get 价格属性被读取了
+    s.price = 'free'; // set 价格属性被修改了
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise</title>
+</head>
+<body>
+<script>
+    // Promise 是 ES6 引入的异步操作的新解决方案, 语法上 Promise 是一个构造函数, 用来封装异步操作并可以获取其成功或失败的结果
+    /*
+     * 1) Promise 构造函数: Promise (executor) {}
+     * 2) Promise prototype.then 方法
+     * 3) Promise prototype.catch 方法
+     */
+    // 实例化 Promise 对象
+    const p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // let data = "数据库中的用户数据";
+            // resolve
+            // resolve(data);
+            let err = "数据读取失败";
+            reject(err);
+        }, 1000);
+    });
+    // 调用 Promise 对象的 then 方法
+    p.then((value) => {
+        console.log(value);
+    }, (reason) => {
+        console.error(reason);
+    });
+</script>
+</body>
+</html>

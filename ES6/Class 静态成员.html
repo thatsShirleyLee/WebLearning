@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class 静态成员</title>
+</head>
+<body>
+<script>
+    /*
+    function Phone() {
+
+    }
+
+    Phone.name = '手机'; // 函数对象, 这种属性属于静态成员
+    Phone.change = function () {
+        console.log("我可以改变世界");
+    };
+    Phone.prototype.size = '5.5inch';
+    let nokia = new Phone(); // 实例对象
+    // console.log(nokia.name); // undefined
+    // nokia.change(); // 报错
+
+    // 函数对象 实例对象 属性不通
+    // 实例对象和构造函数原型 Phone.prototype 属性相通
+    console.log(nokia.size);
+    */
+
+    // ES6
+    class Phone {
+        // 静态属性
+        static name = '手机';
+        static change () {
+            console.log("我可以改变世界");
+        }
+        /*
+         * static 声明的属性
+         * 都属于类, 而不属于实例对象
+         */
+    }
+    let nokia = new Phone();
+    console.log(nokia.name); // undefined
+    console.log(Phone.name);
+
+</script>
+</body>
+</html>
