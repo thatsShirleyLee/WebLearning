@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模块化</title>
+</head>
+<body>
+<script>
+    // 模块化
+    /*
+     * 模块化的好处
+     * 1. 防止命名冲突
+     * 2. 代码复用
+     * 3. 高维护性
+     *
+     * 模块化规范产品
+     * ES6 之前的模块化规范有:
+     * 1. CommonJS => NodeJS\ Browserify
+     * 2. AMD => requireJS
+     * 3. CMD => seaJS
+     *
+     * ES6 模块化语法
+     * 模块功能主要由两个命令构成: export 和 import
+     * export 命令用于规定模块的对外接口
+     * import 命令用于涮涮其他模块提供的功能
+     */
+</script>
+<script type="module">
+    /*
+     * 1. 通用的导入方式
+     */
+    // 引入 m1.js 模块内容
+    import * as m1 from "./my-module/js/m1.js"; // m1.js 的内容全部在变量 m1 里
+    console.log(m1); // Module
+    // 引入 m2.js 模块内容
+    import * as m2 from "./my-module/js/m2.js";
+    console.log(m2);
+    // 引入 m3.js 模块内容
+    import * as m3 from "./my-module/js/m3.js";
+    console.log(m3);
+    m3.default.change();
+    /*
+     * 2. 解构赋值形式
+     */
+    import {school, teach} from "./my-module/js/m1.js";
+    import {school as guigu, findJob} from "./my-module/js/m2.js";
+    import {default as m3} from "./my-module/js/m3.js";
+    console.log(school, teach);
+    console.log(guigu, findJob);
+    console.log(m3);
+    /*
+     * 3. 简便形式
+     * (针对默认暴露)
+     */
+    import m3 from "./my-module/js/m3.js";
+    console.log(m3);
+</script>
+</body>
+</html>
