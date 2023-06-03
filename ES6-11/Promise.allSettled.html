@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise.allSettled</title>
+</head>
+<body>
+<script>
+    /*
+     * allSettled
+     *    - 接收一个 Promise 数组
+     *    - 返回一个 Promise 对象, status 永远是成功的状态; value 是一个数组, 代表原数组中每一个状态和结果
+     */
+    // 声明两个 Promise 对象
+    const p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('商品数据 - 1');
+        }, 1000);
+    });
+
+    const p2 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // resolve('商品数据 - 2');
+            reject('出错了!');
+        }, 1000);
+    });
+    // 调用方法
+    const result = Promise.allSettled([p1, p1]);
+    console.log(result); // PromiseStatus: 'resolved' PromiseValue: Array(2) 0: {status: 'fulfilled', value: '商品数据 - 1'} 1: {status: 'rejected', value: '出错了!'}
+    /*
+     * Promise.all()
+     *  - 接收一个 Promise 数组
+     *  - 返回一个 Promise, status 由数组的每一个 Promise status 决定, 全部成功才成功, 有一个失败就失败 ; value 是 数组里失败的那个 Promise 对象的值 | 一个数组, 数组里成功的 Promise 对象的结果
+     */
+    const res = Promise.all([p1, p2]);
+    console.log(res);
+    /*
+     *
+     * 适用于异步任务
+     * 如果要得到异步任务每一个的结果, 使用 allSettled
+     * 如果要异步任务每一个都成功, 才能继续往下执行, 使用 all
+     */
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则扩展 - dotAll 模式</title>
+</head>
+<body>
+<script>
+    // dot . 元字符 除换行符以外的任意单个字符
+    let str = `
+    <ul>
+        <li>
+            <a>肖申克的救赎</a>
+            <p>上映时间：1999-09-10</p>
+        </li>
+        <li>
+            <a>阿甘正传</a>
+            <p>上映时间：1994-07-06</p>
+        </li>
+    </ul>`;
+    /*
+    // 声明正则
+    const reg = /<li>\s+<a>(.*?)<\/a>\s+<p>(.*?)<\/p>/; // \s 换行符 + 一个或多个 . 通配符（除换行符） * 零个或多个 ? 防止贪婪 (匹配太长)
+    // 执行匹配
+    const result = reg.exec(str);
+    console.log(result);
+    */
+    // 使用 s(.通配所有单个字符, 包括换行符) g(全局查找)
+    let result;
+    let data = [];
+    const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs;
+    while (result = reg.exec(str)) {
+        data.push(result);
+    }
+    // 输出结果
+    console.log(data);
+</script>
+</body>
+</html>

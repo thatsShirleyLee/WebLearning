@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>可选链操作符</title>
+</head>
+<body>
+<script>
+    // ?.
+    /*
+     * 对象的层级比较深, 使用 ?. 不用做层级判断
+     */
+    function main(config) {
+        // const dbHost = config && config.db && config.db.host;
+        const dbHost = config?.db?.host; // ? 代表 前一个属性有 才往后读, 免去做层层判断
+        console.log(dbHost);
+    }
+    main({
+        db : {
+            host : "192.168.1.100",
+            username : "root"
+        },
+        cache : {
+            host : "192,168.1.200",
+            username : "admin"
+        }
+    });
+</script>
+</body>
+</html>

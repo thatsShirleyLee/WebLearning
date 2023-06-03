@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则扩展 - 反向断言</title>
+</head>
+<body>
+<script>
+    /*
+     * 对目标 ‘555’ 前后的内容做识别, 进行提取目标内容
+     */
+    // 声明字符串
+    let str = 'JS5211314你知道么555啦啦啦';
+    // 正向断言 后面是啦的数字串
+    // const reg = /\d+(?=啦)/; // + 任意 一个或多个 \d 数字
+    // const result = reg.exec(str);
+    // console.log(result);
+
+    // 反向断言 前面是么的数字串
+    const reg = /(?<=么)\d+/;
+    const  result = reg.exec(str);
+    console.log(result);
+
+</script>
+</body>
+</html>
