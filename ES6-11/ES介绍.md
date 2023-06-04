@@ -2,7 +2,7 @@
 - ES全称
   - EcmaScript
 - 脚本语言的规范
-- 平时经常辨别的Javascript是EcmaScript的一种实现,所以ES新特性其实指的就是Javascript的新特性
+- 平时经常辨别的 Javascript 是 EcmaScript 的一种实现,所以ES新特性其实指的就是Javascript的新特性
 # 为什么要学习ES新特性
 1. 语法简洁,功能丰富
 2. 框架开发应用
