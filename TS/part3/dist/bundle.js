@@ -1,0 +1,1 @@
+(()=>{"use strict";var o;o={name:"孙悟空"},console.log(o),o.age=18,console.log(o),console.log(579),console.log("哈哈"),console.log("你好")})();
