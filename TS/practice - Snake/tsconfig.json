@@ -2,10 +2,7 @@
   "compilerOptions": {
     "module": "es2015",
     "target": "es2015",
-//    "sourceMap": true
-    "strict": true
-  },
-//  "exclude": [
-//    "node_modules"
-//  ]
+    "strict": true,
+    "noEmitOnError": true // 有错的时候编译不通过
+  }
 }
