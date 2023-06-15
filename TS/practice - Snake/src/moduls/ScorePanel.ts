@@ -11,7 +11,7 @@ class ScorePanel {
     // 设置一个变量表示多少分时升级
     upScore: number;
 
-    constructor(maxLevel: number = 10, upScore: number = 10) {
+    constructor(maxLevel: number = 10, upScore: number = 2) {
         this.scoreEle = document.getElementById('score')!;
         this.levelEle = document.getElementById('level')!;
         this.maxLevel = maxLevel;

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props 基本使用</title>
+</head>
+<body>
+<!-- 准备好一个容器 -->
+<div id="test1"></div>
+<div id="test2"></div>
+<!-- 引入 react 核心库-->
+<script type="text/javascript" src="../js/react.development.js"></script>
+<!-- 引入 react-dom, 用于支持 react 操作 dom-->
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<!-- 引入 babel, 用于将 jsx 转为 js -->
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<!-- text/babel 表示 script 标签里写的是 jsx 并且使用 babel 转换-->
+<script type="text/babel"> /* 此处一定要写 babel */
+/*
+ * 要求:
+ * 创建组件时, name必须有, age 必须时数值类型, sex 有默认值
+ */
+
+
+// 1. 创建类式组件
+class Person extends React.Component {
+    render() {
+        console.log(this);
+        const {name, age, sex} = this.props;
+        return (
+            <ul>
+                <li>姓名: {name}</li>
+                <li>性别: {sex}</li>
+                <li>年龄: {age+1}</li>
+            </ul>
+        );
+    }
+}
+
+// 2. 渲染组件到页面
+// ReactDOM.render(<Person name='tom' age='18' sex='女'/>, document.getElementById('test1'));
+ReactDOM.render(<Person name='tom' age={18} sex='女'/>, document.getElementById('test1'));
+const p = {name: '老刘', age: 20, sex: '男'};
+// ReactDOM.render(<Person name={p.name} age={p.age} sex={p.sex}/>, document.getElementById('test2'));
+
+/*
+ * 原生的 js
+ * const person = {name: 'tom', age: 20}
+ * const person2 = {...person} // 深拷贝
+ * const person3 = {...person, name: 'jerry', school: 'xxx'} // 在复制时,修改/增加 key-value
+ * 但是 <Person {...p}/> 这里的 花括号{} 表示 内部是 js 表达式, 但是 原生js表达式 ...p 是不允许对象展开的
+ * 不过, 在 babel+js 下, 可以展开对象; 不能随意展开, 只允许在标签属性传递时使用
+ */
+ReactDOM.render(<Person {...p}/>, document.getElementById('test2'));
+
+
+</script>
+</body>
+</html>

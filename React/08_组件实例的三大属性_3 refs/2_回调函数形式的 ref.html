@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回调函数形式的 ref</title>
+</head>
+<body>
+<div id="test"></div>
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<!--<script type="text/javascript" src="../js/prop-types.js"></script>-->
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/babel">
+    class Demo extends React.Component {
+        showData = () => {
+            // console.log(this);
+            const {input1} = this;
+            alert(input1.value);
+        };
+        showData2 = () => {
+            const {input2} = this;
+            alert(input2.value);
+        };
+        render() {
+            /*
+             * c => this.input1 = c
+             * 即 (c) => {this.input1 = c}
+             * c 就是 ref 当前所在的 标签节点
+             * 意思是, <input ref={c => this.input1 = c} type="text" placeholder="点击按钮提示数据"/>
+             *  把当前标签节点, 作为实参传给箭头函数, 重命名为 input1, 挂在 this 上.
+             *  箭头函数没有自己的 this, 向外找, 找到实例对象作为 this.
+             *  所以实例对象身上有 input1 属性, 值是 当前标签节点
+             */
+            return (
+                <div>
+                    <label>
+                        <input ref={c => this.input1 = c} type="text" placeholder="点击按钮提示数据"/>
+                    </label>&nbsp;
+                    <button onClick = {this.showData}>点击按钮提示左侧数据</button>&nbsp;
+                    <label>
+                        <input ref={c => this.input2 = c} onBlur={this.showData2} type="text" placeholder="失去焦点提示数据"/>
+                    </label>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(<Demo/>, document.getElementById('test'));
+</script>
+</body>
+</html>

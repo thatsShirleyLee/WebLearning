@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bind</title>
+</head>
+<body>
+<script>
+  function demo() {
+    'use strict'
+    console.log(this);
+  }
+  demo();
+  demo.bind({a: 1, b: 2})();
+</script>
+</body>
+</html>
