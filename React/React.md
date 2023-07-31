@@ -29,6 +29,7 @@
 # React 面向组件编程
 * 函数式组件: 适合简单组件
 * 类式组件: 适合复杂组件
+  * 使用类去创建组件时, 类中所有自定义方法都要写成：赋值语句+箭头函数 的形式
 ## 组件三大核心属性
 ### state
 1. 理解
@@ -39,7 +40,64 @@
    * 组件自定义的方法中 this 为 undefined ，如何解决？
      * 强制绑定 this : 通过函数对象的 bind()
      * 箭头函数
-   * 状态数据，不能直接修改或更新
+   * **状态数据，不能直接修改或更新**
+#### 严格模式
+* 类中函数自动开启严格模式
+* 严格模式的 this, 不指向 window, 而是 undefined
+```javascript
+   const p1 = new Person('小红', 20)
+   const x = p1.study()
+   x()
+```
+> * Person类的实例是 p1, p1.study()方法中的 this 就是 p1这个实例对象
+> * study()方法放在了类的原型对象上, 所有实例都是通过原型对象找到这个方法来调用
+> * 而 x 是通过实例p1.study, 找到了这个方法， 将方法拷贝了一份, 当 x() 调用时就是直接调用方法, 所以会丢失 this
+```javascript
+   function demo() {
+      console.log(this)
+   }
+   demo() // 这个this就是window
+
+   function demo1() {
+      'use strict'
+      console.log(this)
+   }
+   demo1() // 这个this为undefined
+```
+#### 实例自身的方法
+```javascript
+   function demo() {
+      console.log(this)
+   }
+   demo() // 输出 window
+   demo.bind({a: 1, b: 2}) // bind 返回一个新的函数, 什么也不输出
+   const x = demo.bind({a: 1, b: 2})
+   x() // 输出 {a: 1, b: 2}
+```
+#### state 简写方式
+```javascript
+   class Weather extends React.Component {
+      state = {isHot: true} // 这会直接将属性挂到实例上
+      changeWeather = function () {
+         console.log(this) // 
+      }
+   }
+   // 在 onClick = this.changeWeather 上, this.changeWeather 函数只是 onClick 的回调
+   // 与之前的区别在于，现在的赋值语句，将changeWeather方法放到了实例自身
+   class Weather extends React.Component {
+      state = {isHot: true} // 这会直接将属性挂到实例上
+      changeWeather(){ // 这种方法是挂在原型对象上，调用时要向外找一层
+         console.log(this) // 
+      }
+   }
+   // 但是箭头函数没有自己的 this，会找其外层函数的 this
+   class Weather extends React.Component {
+      state = {isHot: true}
+      changeWeather = () => { 
+         console.log(this) // 箭头函数的 this 是外层函数的 this
+      }
+   }
+```
 ### props
 1. 理解
    * 每个组件对象都会有 props ( properties 的简写)属性

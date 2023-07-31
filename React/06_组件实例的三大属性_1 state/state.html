@@ -24,7 +24,7 @@ class Weather extends React.Component {
             isHot: true,
             wind: '微风'
         }
-        // 这个是实例自身的 changeWeather 方法
+        // 这个是实例自身的 changeWeather 方法 (构造器里写的，都是实例自身会有的，而构造器外的方法都是挂在原型对象上的，需要实例去原型对象上找然后调用)
         this.changeWeather = this.changeWeather.bind(this); // this(实例) 在原型对象上找到 changeWeather, 通过 bind 重新写一个函数, 并修改该函数的 this 为 当前的实例
         /*
          * The bind() method creates a new function that,

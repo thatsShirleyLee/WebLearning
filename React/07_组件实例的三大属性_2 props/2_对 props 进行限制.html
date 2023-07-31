@@ -40,7 +40,7 @@ class Person extends React.Component {
     }
 }
 // 对标签属性进行类型 必要性的设置
-Person.propTypes = {
+Person.propTypes = { // propTypes 属性规则, PropTypes.xxx 提供什么规则供使用 (需要引入 prop-types.js 包)
     name: PropTypes.string.isRequired, // 限制name是字符串类型, 并且必传
     sex: PropTypes.string, // 限制 sex 为 字符串
     age: PropTypes.number, // 限制 age 为 number
