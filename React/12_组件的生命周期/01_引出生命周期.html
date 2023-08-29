@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高阶函数 函数柯里化</title>
+</head>
+<body>
+<!-- 准备好一个容器 -->
+<div id="test"></div>
+
+<!-- 引入 react 核心库 -->
+<script type="text/javascript" src="../js/react.development.js"></script>
+<!-- 引入 react-dom, 用于支持 react 操作 dom -->
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<!-- 引入babel, 用于将 jsx 转为 js -->
+<script type="text/javascript" src="../js/babel.min.js"></script>
+
+<script type="text/babel">
+    // 创建组件
+    // 生命周期回调函数 ==> 生命周期钩子函数 ==> 生命周期函数 ==> 生命周期钩子
+    // react 会在合适的时间把函数勾出来执行
+    class Life extends React.Component {
+        // 初始化状态
+        state = {opacity: 1}
+        // 卸载组件
+        death = () => {
+            ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+        }
+        // 组件挂载完毕
+        componentDidMount() {
+            this.timer = setInterval(() => {
+                // 获取原状态
+                let {opacity} = this.state
+                //减小0.1
+                opacity -= 0.1
+                if (opacity <= 0) opacity = 1 // 不能写出 opacity === 0, 因为这里-0.1并不是真正的0.1, 可能会出现负数而跳过0
+                // 设置新的透明度
+                this.setState({opacity}) // this.setState({opacity:opacity}) key和value同名时可以使用对象的简写形式
+            },200)
+        }
+        // 组件将要卸载
+        componentWillUnmount() {
+            // 清除定时器
+            clearTimeout(this.timer)
+        }
+        // 初始化渲染，状态更新之后
+        render() {
+            return(
+                <div>
+                    <h2 style={{opacity: this.state.opacity}}>React学不会，怎么办？</h2>
+                    <button onClick={this.death}>不活了</button>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(<Life/>, document.getElementById('test'))
+</script>
+</body>
+</html>

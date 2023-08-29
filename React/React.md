@@ -112,4 +112,55 @@
    * 字符串形式的 ref: `<input ref="input1"/>`
    * 回调形式的 ref: `<input ref={(c)=>{this.input1 = c}}/>`
    * creatRef 创建的 ref 容器: `myRef = React.creatRef()` `<input ref={this.myRef}/>`
+     * createRef 调用后可以返回一个容器，该容器可以存储被 ref 所标识的节点
+       * `<input ref={this.myRef}/>` 会 将`<input/>`这个节点放到当前实例对象this的属性myRef容器里
+       * 使用`this.myRef.current`就可以找到这个节点
+       * 专人专用， 只能存一个节点，后来者居上
 ### 事件处理
+1. 通过onXxx属性指定事件处理函数(注意大小写)
+   - React使用的是自定义(合成)事件, 而不是使用的原生DOM事件
+   - React中的事件是通过事件委托方式处理的(委托给组件最外层的元素)
+2. 通过event.target得到发生事件的DOM元素对象
+## 组件的生命周期
+### 理解
+1. 组件从创建到死亡它会经历一些特定的阶段
+2. React 组件中包含一系列钩子函数(生命周期回调函数), 会在特定的时刻调用
+3. 我们在定义组件时， 会在特定的生命周期回调函数中，做特定的工作
+### 生命周期流程图(旧)
+![img_1.png](12_组件的生命周期/02_react生命周期(旧).png)
+#### 生命周期的三个阶段(旧)
+1. 初始化阶段：由 ReactDOM.render()触发——初次渲染
+   - constructor()
+   - componentWillMount()
+   - render()
+   - componentDidMount()
+2. 更新阶段：由组件内部 this.setState()或父组件重新 render 触发
+   - shouldComponentUpdate()
+   - componentWillUpdate()
+   - render()
+   - componentDidUpdate()
+3. 卸载组件：由 ReactDOM.unmountComponentAtNode() 触发
+    - componentWillUnmount()
+### 生命周期流程图(新)
+![img_2.png](12_组件的生命周期/03_react生命周期(新).png)
+#### 生命周期的三个阶段(新)
+1. 初始化阶段：由 ReactDOM.render()触发——初次渲染
+    - constructor()
+    - **getDerivedStateFromProps**()
+    - render()
+    - componentDidMount()
+2. 更新阶段：由组件内部 this.setState()或父组件重新 render 触发
+    - **getDerivedStateFromProps**()
+    - componentWillUpdate()
+    - render()
+    - **getSnapshotBeforeUpdate**()
+3. 卸载组件：由 ReactDOM.unmountComponentAtNode() 触发
+    - componentWillUnmount()
+### 重要的钩子
+1. render(): 初始化渲染或更新渲染调用
+2. componentDidMount(): 开启监听， 发送 ajax 请求
+3. componentWillUnmount(): 做一些收尾工作, 如: 清理定时器
+### 即将废弃的钩子
+1. componentWillMount()
+2. componentWillReceiveProps()
+3. componentWillUpdate()
