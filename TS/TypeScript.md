@@ -486,7 +486,7 @@ let big: number = 100n;
             }
         
             sayHello(){
-                console.log("Hello");
+                console.log("Index");
             }
       }
       ```

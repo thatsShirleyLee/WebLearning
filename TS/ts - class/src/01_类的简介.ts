@@ -15,11 +15,11 @@ class Person {
     static readonly age: number = 18;
     // 定义方法
     sayHello() {
-        console.log('Hello 大家好!');
+        console.log('Index 大家好!');
     }
     // 静态方法 (类方法)
     static sayHello() {
-        console.log('Hello 大家好!');
+        console.log('Index 大家好!');
     }
 }
 const per = new Person();

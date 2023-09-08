@@ -29,7 +29,7 @@ HTTP (Hypertext Transport Protocol) 超文本传输协议, 规定了浏览器和
 响应体 <html>
         <head>
           <body>
-              <h1>Hello!</h1>
+              <h1>Index!</h1>
           </body>
         </head>
       </html>

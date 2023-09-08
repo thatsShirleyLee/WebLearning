@@ -17,11 +17,11 @@ class Person {
     }
     // 定义方法
     sayHello() {
-        console.log('Hello 大家好!');
+        console.log('Index 大家好!');
     }
     // 静态方法 (类方法)
     static sayHello() {
-        console.log('Hello 大家好!');
+        console.log('Index 大家好!');
     }
 }
 Person.age = 18;

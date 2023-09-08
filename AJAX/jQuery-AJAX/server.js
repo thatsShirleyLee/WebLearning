@@ -16,7 +16,7 @@ app.get('/server', (request, response)=>{
 //     // 设置运行接受特殊请求头
 //     response.setHeader('Access-Control-Allow-Headers', '*'); // 还会发OPTIONS请求
 //     // 设置响应体
-//     response.send('Hello Ajax POST');
+//     response.send('Index Ajax POST');
 // });
 
 // 可以接受任意类型的请求 (GET POST OPTIONS TOUCH ...)
@@ -26,7 +26,7 @@ app.all('/server', (request, response)=>{
     // 设置运行接受特殊请求头
     response.setHeader('Access-Control-Allow-Headers', '*');
     // 设置响应体
-    response.send('Hello AJAX POST');
+    response.send('Index AJAX POST');
 });
 
 // JSON 响应

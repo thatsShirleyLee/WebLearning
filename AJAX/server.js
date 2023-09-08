@@ -16,7 +16,7 @@ app.get('/server', (request, response) => {
 //     // 设置运行接受特殊请求头
 //     response.setHeader('Access-Control-Allow-Headers', '*'); // 还会发OPTIONS请求
 //     // 设置响应体
-//     response.send('Hello Ajax POST');
+//     response.send('Index Ajax POST');
 // });
 
 // 可以接受任意类型的请求 (GET POST OPTIONS TOUCH ...)
@@ -26,7 +26,7 @@ app.all('/server', (request, response) => {
     // 设置运行接受特殊请求头
     response.setHeader('Access-Control-Allow-Headers', '*');
     // 设置响应体
-    response.send('Hello AJAX POST');
+    response.send('Index AJAX POST');
 });
 
 // JSON 响应
@@ -82,7 +82,7 @@ app.all('/axios-server', (request, response) => {
 
 // jsonp 服务
 app.all('/jsonp-server', (request, response) => {
-    // response.send("console.log('Hello jsonp-server')");
+    // response.send("console.log('Index jsonp-server')");
     const data = {
         name: "尚硅谷"
     };
@@ -104,7 +104,7 @@ app.all('/check-username', (request, response) => {
 
 // jQuery-jsonp 服务
 app.all('/jquery-jsonp-server', (request, response) => {
-    // response.send("console.log('Hello jsonp-server')");
+    // response.send("console.log('Index jsonp-server')");
     const data = {
         name: "尚硅谷",
         city: ["北京", "上海", "深圳"]
@@ -122,7 +122,7 @@ app.all('/cors-server', (request, response) => {
     response.setHeader('Access-Control-Allow-Origin', '*');
     response.setHeader('Access-Control-Allow-Header', '*');
     response.setHeader('Access-Control-Allow-Method', '*');
-    response.send("Hello CORS");
+    response.send("Index CORS");
 });
 
 

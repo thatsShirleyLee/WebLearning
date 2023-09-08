@@ -1,4 +1,4 @@
-# React 入门
+# 1. React 入门
 ## React 全家桶
 > * React 基础
 > * React-Router: 管理路由的库
@@ -26,7 +26,7 @@
 > 当应用的js都以模块来编写的, 这个应用就是一个模块化的应用
 ### 组件化
 > 当应用是以多组件的方式实现, 这个应用就是一个组件化的应用
-# React 面向组件编程
+# 2. React 面向组件编程
 * 函数式组件: 适合简单组件
 * 类式组件: 适合复杂组件
   * 使用类去创建组件时, 类中所有自定义方法都要写成：赋值语句+箭头函数 的形式
@@ -127,7 +127,7 @@
 2. React 组件中包含一系列钩子函数(生命周期回调函数), 会在特定的时刻调用
 3. 我们在定义组件时， 会在特定的生命周期回调函数中，做特定的工作
 ### 生命周期流程图(旧)
-![img_1.png](12_组件的生命周期/02_react生命周期(旧).png)
+![img_1.png](react-basic/12_组件的生命周期/02_react生命周期(旧).png)
 #### 生命周期的三个阶段(旧)
 1. 初始化阶段：由 ReactDOM.render()触发——初次渲染
    - constructor()
@@ -142,7 +142,7 @@
 3. 卸载组件：由 ReactDOM.unmountComponentAtNode() 触发
     - componentWillUnmount()
 ### 生命周期流程图(新)
-![img_2.png](12_组件的生命周期/03_react生命周期(新).png)
+![img_2.png](react-basic/12_组件的生命周期/03_react生命周期(新).png)
 #### 生命周期的三个阶段(新)
 1. 初始化阶段：由 ReactDOM.render()触发——初次渲染
     - constructor()
@@ -164,3 +164,26 @@
 1. componentWillMount()
 2. componentWillReceiveProps()
 3. componentWillUpdate()
+
+# 3. React 脚手架
+## 使用 `create-react-app` 创建脚手架
+> - xxx 脚手架: 用来帮助程序员快速创建一个基于 xxx 库的模板项目
+>   1. 包含了所有需要的配置 ( 语法检查、jsx编译、devSever...) 
+>   2. 下载好了所有相关的依赖
+>   3. 可以直接运行一个简单效果
+> - react 提供了一个用于创建 react 项目的脚手架库: create-raect-app
+> - 项目的整体技术架构为: react + webpack + es6 + eslint
+> - 使用脚手架开发的项目的特点: 模块化, 组件化, 工程化
+### 创建项目并启动
+- 全局安装: `npm i -g create-react-app` => `C:\Users\Lee\AppData\Roaming\npm\node_modules\create-react-app`
+- 切换到想创建项目的目录， 使用命令: `create-react-app hello-react`
+- 进入项目文件夹 `cd hello-react`
+- 启动项目: `npm start` / `yarn start` (使用`npm i -g yarn`安装yarn)
+  - 打包项目: `yarn build`
+  - 测试项目(很少用): `yarn test`
+  - 暴露修改webpack.config.js等文件: `yarn eject` (if you do this, you can't go back!)
+## 组件的组合使用 - ToDoList
+# 4. React ajax
+# 5. React 路由
+# 6. React UI 组件库
+# 7. redux

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>1_使用 jsx 创建虚拟 DOM</title>
+    <title>hello_react</title>
 </head>
 <body>
 <!-- 准备好一个容器 -->
@@ -16,11 +16,7 @@
 <!-- text/babel 表示 script 标签里写的是 jsx 并且使用 babel 转换-->
 <script type="text/babel"> /* 此处一定要写 babel */
 // 1. 创建虚拟 DOM
-const VDOM = ( /* 此处一定不要写引号, 因为不是字符串 */
-    <h1 id="title">
-        <span>Hello, React</span>
-    </h1>
-);
+const VDOM = <h1>Index, React</h1>; /* 此处一定不要写引号, 因为不是字符串 */
 // 2. 渲染虚拟 DOM 到页面
 ReactDOM.render(VDOM, document.getElementById("test")); /* 把 'VDOM' 这个 DOM , 渲染到 test 这个容器*/
 

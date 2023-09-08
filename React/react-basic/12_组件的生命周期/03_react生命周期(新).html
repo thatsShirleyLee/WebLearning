@@ -17,20 +17,20 @@
 
 <script type="text/babel">
     /*
-        1. 初始化阶段：由 ReactDOM.render()触发——初次渲染
-            - constructor()
-            - **getDerivedStateFromProps**()
-            - render()
-            - componentDidMount() ===>常用
-                一般在这个钩子中做一些初始化的事， 例如：开启定时器、发送网络请求、订阅消息
-        2. 更新阶段：由组件内部 this.setState()或父组件重新 render 触发
-            - **getDerivedStateFromProps**()
-            - componentWillUpdate()
-            - render()
-            - **getSnapshotBeforeUpdate**()
-        3. 卸载组件：由 ReactDOM.unmountComponentAtNode() 触发
-            - componentWillUnmount() ===> 常用
-                一般在这个钩子中做一些收尾的事，例如：关闭定时器、取消订阅消息
+        1. 初始化阶段: 由ReactDOM.render()触发---初次渲染
+            1.constructor()
+            2.getDerivedStateFromProps
+            3.render()
+            4.componentDidMount()
+        2. 更新阶段: 由组件内部this.setSate()或父组件重新render触发
+            1.getDerivedStateFromProps
+            2.shouldComponentUpdate()
+            3.render()
+            4.getSnapshotBeforeUpdate
+            5.componentDidUpdate()
+        3. 卸载组件: 由ReactDOM.unmountComponentAtNode()触发
+            1.componentWillUnmount()
+
      */
     // 创建组件
     class Count extends React.Component {
@@ -40,9 +40,15 @@
             // 初始化状态
             this.state = {count: 0}
         }
+        // 若 state 的值在任何时候都取决于 props, 那么可以使用 getDerivedStateFromProps
         static getDerivedStateFromProps(props, state) {
-            console.log('Count---getDerivedStateFromProps', props, state)
-            return props  // state 的值在任何时候都取决于 props
+            console.log('getDerivedStateFromProps', props, state)
+            return null // props  // state 的值在任何时候都取决于 props
+        }
+        // 在更新之前获取快照
+        getSnapshotBeforeUpdate() {
+            console.log('getSnapshotBeforeUpdate')
+            return 'aiguigu' // -> snapshot
         }
         // +1按钮的回调
         add = () => {
@@ -86,12 +92,12 @@
             // return false
         }
         // 组件更新完毕的钩子
-        componentDidUpdate() {
-            console.log('Count---componentDidUpdate')
+        componentDidUpdate(prevProps, prevState, snapshotValue) {
+            console.log('Count---componentDidUpdate', prevProps, prevState, snapshotValue)
         }
     }
     // 渲染组件
-    ReactDOM.render(<Count name={'Tom'}/>, document.getElementById('test'))
+    ReactDOM.render(<Count count={199}/>, document.getElementById('test'))
 </script>
 </body>
 </html>
