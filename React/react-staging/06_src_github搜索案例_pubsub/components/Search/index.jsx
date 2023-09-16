@@ -9,7 +9,7 @@ export default class Search extends Component {
         // 消息发布
         PubSub.publish('atguigu', {isFirst: false, isLoading: true});
 
-        axios.get(`http://localhost:3000/api1/search/users2?q=${keyWord}`).then(
+        axios.get(`/api1/search/users2?q=${keyWord}`).then(
             response => {
                 console.log('成功了', response.data);
                 PubSub.publish('atguigu', {isLoading: false, users: response.data.items});
