@@ -33,8 +33,8 @@ export default class App extends Component {
                                 {/* 注册路由，下面是路由组件，通过<Home/>方式引入的是 一般组件  */}
                                 {/* 包裹 Switch 组件 当匹配到路由就不会继续向下匹配，效率比较高*/}
                                 <Switch>
-                                    <Route path={"/about"} component={About}/>
-                                    <Route path={"/home"} component={Home}/>
+                                    <Route path="/about" component={About}/>
+                                    <Route path="/home" component={Home}/>
                                     {/* 路由匹配不上时，默认重定向打开 /about */}
                                     <Redirect to={"/about"}/>
                                 </Switch>

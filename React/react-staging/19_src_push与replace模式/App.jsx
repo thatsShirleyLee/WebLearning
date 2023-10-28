@@ -23,8 +23,8 @@ export default class App extends Component {
 
                             {/* 在 React 中靠路由链接实现切换组建 -- 便携路由链接 */}
                             {/* 标签体会作为 props 的 children 属性直接传过去 */}
-                            <MyNavLink to={"/about"}>About</MyNavLink>
-                            <MyNavLink to={"/home"}>Home</MyNavLink>
+                            <MyNavLink replace to={"/about"}>About</MyNavLink>
+                            <MyNavLink replace to={"/home"}>Home</MyNavLink>
                         </div>
                     </div>
                     <div className="col-xs-6">
