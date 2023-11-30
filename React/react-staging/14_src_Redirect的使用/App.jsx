@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, Redirect} from "react-router-dom";
 import MyNavLink from "./components/MyNavLink";
 import About from "./pages/About";  // 路由组件 --> pages, 由<Route>包裹
 import Home from "./pages/Home";  // 路由组件 --> pages
-import Header from "./components/Header";
-import Redirect from "react-router-dom/es/Redirect";  // 一般组件 --> components
+import Header from "./components/Header";  // 一般组件 --> components
 
 export default class App extends Component {
     render() {

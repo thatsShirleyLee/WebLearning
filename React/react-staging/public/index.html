@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="stylesheet" href="./css/bootstrap.css">
+<!--    <link rel="stylesheet" href="/css/bootstrap.css">-->
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/bootstrap.css">
+<!--    解决样式丢失问题，还可以使用 HashRouter -->
     <title>React</title>
+    <style>
+        .atguigu {
+            background-color: orange !important;
+            color: white !important;
+        }
+    </style>
 </head>
 <body>
 <div id="root"></div>

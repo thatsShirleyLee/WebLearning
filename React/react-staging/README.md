@@ -23,7 +23,7 @@
     2. 适用于任意组件间通信
     3. 要在组件的 `componentWillUnmount` 中取消订阅
 4. `fetch` 发送请求（关注分离的设计思想）
-   ```jsx
+    ```jsx
        try {
            const response= await fetch(`/api1/search/users2?q=${keyWord}`)
            const data = await response.json()
@@ -43,17 +43,38 @@
 
 ## 四、路由组件与一般组件
 1. 写法不同：
-    一般组件：`<Demo/>`
-    路由组件：`<Route path="/demo" component={Demo}/>`
+    - 一般组件：`<Demo/>`
+    - 路由组件：`<Route path="/demo" component={Demo}/>`
 2. 存放位置不同：
-    一般组件：`components`
-    路由组件：`pages`
+    - 一般组件：`components`
+    - 路由组件：`pages`
 3. 接收到的 `props` 不同：
-    一般组件：写组件标签时传递了什么，就能收到什么
-    路由组件：接收到三个固定的属性
+    - 一般组件：写组件标签时传递了什么，就能收到什么
+    - 路由组件：接收到三个固定的属性
+      ```
+          "history": {
+               go: f go(n)
+               goBack: f goBack()
+               goForward: f goForward()
+               push: f push(path, state)
+               replace: f replace(path, state)
+          },
+          "location": {
+               "pathname": "/about",
+               "search": "",
+               "state": undefined
+          },
+          "match": {
+               "path": "/about",
+               "url": "/about", 
+               "params": {}
+          }
+      ```
 		
 ## 五、NavLink与封装NavLink
 1. `NavLink` 可以实现路由链接的高亮，通过activeClassName指定样式名
+2. 标签体内容是一个特殊的标签属性
+3. 通过 `this.props.children` 可以获取标签体内容
 
 ## 六、Switch的使用
 1. 通常情况下，`path` 和`component`是一一对应的关系。
@@ -62,7 +83,7 @@
 ## 七、解决多级路径刷新页面样式丢失的问题
 1. `public/index.html` 中 引入样式时不写 `./` 写 `/`（常用）
 2. `public/index.html` 中 引入样式时不写 `./` 写 `%PUBLIC_URL%` （常用）
-3. 使用 `HashRouter`
+3. 使用 `HashRouter`: 会在路径后加`#/`
 
 ## 八、路由的严格匹配与模糊匹配
 1. 默认使用的是模糊匹配（简单记：【输入的路径】必须包含要【匹配的路径】，且顺序要一致）

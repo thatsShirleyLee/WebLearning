@@ -260,7 +260,7 @@ let big: number = 100n;
           "name": "part3",
           "version": "1.0.0",
           "description": "",
-          "main": "index.js",
+          "main": "index.jsx",
           "scripts": {
             "test": "echo \"Error: no test specified\" && exit 1"
           },
