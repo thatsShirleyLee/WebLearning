@@ -8,3 +8,12 @@ root.render(
         <App/>
     </React.StrictMode>
 );
+store.subscribe(
+    () => {
+        root.render(
+            <React.StrictMode>
+                <App/>
+            </React.StrictMode>
+        );
+    }
+)

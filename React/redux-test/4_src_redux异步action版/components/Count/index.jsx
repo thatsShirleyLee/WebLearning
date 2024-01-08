@@ -5,12 +5,12 @@ import {createDecrementAction, createIncrementAction, createIncrementAsyncAction
 
 class Count extends Component {
 
-    componentDidMount() {
-        // 检测 redux 中的状态， 只要变化就调用 render
-        store.subscribe(() => {
-            this.setState({}) // 更新状态为：什么也不更新，借用setState()来render()，刷新组件
-        })
-    }
+    // componentDidMount() {
+    //     // 检测 redux 中的状态， 只要变化就调用 render
+    //     store.subscribe(() => {
+    //         this.setState({}) // 更新状态为：什么也不更新，借用setState()来render()，刷新组件
+    //     })
+    // }
 
     increment = () => {
         const {value} = this.selectNumber
