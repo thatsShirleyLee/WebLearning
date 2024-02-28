@@ -1,8 +1,6 @@
 <template>
     <div class='person'>
-        <h1>情况4: 监视【ref】或【reactive】定义的【对象类型】数据中的某个属性</h1>
-        <!-- 若该属性值不是【对象类型】，需要写成函数形式 -->
-        <!-- 若该属性值依然是【对象类型】，可直接编，也可写成函数，建议写成函数 -->
+        <h1>情况2: 监视【ref】定义的【对象类型】数据</h1>
         <h2>姓名: {{ person.name }}</h2>
         <h2>年龄: {{ person.age }}</h2>
         <button @click="changeName">修改姓名</button>
@@ -12,32 +10,35 @@
 </template>
 
 <script lang='ts' setup name='Person'>
-import { reactive, watch } from 'vue';
+import { ref, watch } from 'vue';
 
-    let person = reactive({
+    let person = ref({
         name: '张三',
         age: 22
-    })  //  隐式开启深层监视, 且无法关闭 (deep: false 无效)
+    })
     function changeName() {
-        person.name += '~'
+        person.value.name += '~'
     }
     function changeAge() {
-        person.age += 1
+        person.value.age += 1
     }
     function changePerson() {
-        Object.assign(person, {
+        person.value = {
             name: '李四',
             age: 18
-        })
+        }
     }
-    // 情况3: 监视【reactive】定义的【对象类型】数据, 默认开启深度监视
+    // 情况2: 监视【ref】定义的【对象类型】数据, 监视的是对象的地址变化;
+    // 若要监视对象内部属性的变化，需要手动开启深度监视
     /*
         watch的第一个参数: 被监视的数据
         watch的第二个参数: 监视的毁回调
         watch的第三个参数: 配置对象 (deep、immediate...)
      */
     watch(person, (newVal, preVal) => {
-        console.log('person变化了', person, newVal, preVal)
+        console.log('person变化了', person.value, newVal, preVal)
+    }, {
+        deep: true
     })
     
 </script>

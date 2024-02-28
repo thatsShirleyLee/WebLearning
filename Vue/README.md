@@ -1,7 +1,20 @@
 # 官方文档
 https://cn.vuejs.org/guide/quick-start.html
 ## hello_vue3
+This template should help get you started developing with Vue 3 in Vite.
 > `npm create vue@latest` 以创建 `vue`项目
+- Project Setup
+```sh
+npm install
+```
+- Compile and Hot-Reload for Development
+```sh
+npm run dev
+```
+- Type-Check, Compile and Minify for Production
+```sh
+npm run build
+```
 - src
   - App.vue
     ```Typescript
@@ -94,3 +107,9 @@ https://cn.vuejs.org/guide/quick-start.html
         }
     </script>
     ```
+### watch
+Vue3中的watch只能监视以下四种数据：
+- ref定义的数据。
+- reactive定义的数据。
+- 函数返回一个值（getter函数）。
+- 一个包含上述内容的数组。

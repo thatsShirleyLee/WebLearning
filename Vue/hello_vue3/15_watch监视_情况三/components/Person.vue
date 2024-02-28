@@ -1,8 +1,6 @@
 <template>
     <div class='person'>
-        <h1>情况4: 监视【ref】或【reactive】定义的【对象类型】数据中的某个属性</h1>
-        <!-- 若该属性值不是【对象类型】，需要写成函数形式 -->
-        <!-- 若该属性值依然是【对象类型】，可直接编，也可写成函数，建议写成函数 -->
+        <h1>情况3: 监视【reactive】定义的【对象类型】数据</h1>
         <h2>姓名: {{ person.name }}</h2>
         <h2>年龄: {{ person.age }}</h2>
         <button @click="changeName">修改姓名</button>
