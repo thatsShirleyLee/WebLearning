@@ -28,7 +28,7 @@ import { reactive, watch } from 'vue';
             age: 18
         })
     }
-    // 情况3: 监视【reactive】定义的【对象类型】数据, 默认开启深度监视
+    // 情况3: 监视【reactive】定义的【对象类型】数据, 默认开启深度监视 (deep: false 关闭不了默认的深层监听)
     /*
         watch的第一个参数: 被监视的数据
         watch的第二个参数: 监视的毁回调

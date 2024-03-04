@@ -107,9 +107,38 @@ npm run build
         }
     </script>
     ```
-### watch
-Vue3中的watch只能监视以下四种数据：
-- ref定义的数据。
-- reactive定义的数据。
-- 函数返回一个值（getter函数）。
+### `watch`
+`Vue3`中的`watch`只能监视以下四种数据：
+- `ref`定义的数据。
+- `reactive`定义的数据。
+- 函数返回一个值（`getter`函数）。
 - 一个包含上述内容的数组。
+#### `watch` vs. `watchEffect`
+1. 都能监听响应式数据的变化，不同的是监听数据变化的方式不同
+2. `watch`: 要明确指出监视的数据
+3. `watchEffect`: 不用明确指出监视的数据（函数中用到哪些属性，就监视哪些属性）
+## 接口、泛型、自定义类型
+- 接口：
+    ```TypeScript
+        export interface PersonInter {
+            id: string,
+            name: string,
+            age: number
+        }
+    ```
+- 泛型：
+    ```TypeScript
+        Array<PersonInter>
+        PersonInter[]
+    ```
+- 自定义类型：
+    ```TypeScript
+        export type Persons = PersonInter[]
+    ```
+## `Vue2`
+- 创建 vue2脚手架：`vue create [project_name]`
+- 查看 package.json -> Script 运行、打包项目
+- `npm run serve`
+### 关闭语法检查
+  - `eslint-disable-next-line`关闭下一行的语法检查
+  - `eslint-disable` 关闭全部语法检查

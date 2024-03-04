@@ -4,7 +4,7 @@
         <!-- v-model:value 双向绑定，简写：v-model -->
         姓：<input type="text" v-model="firstName"><br>
         名：<input type="text" v-model="lastName"><br>
-        全名：<span>{{fullName}}</span><br>
+        全名：<span>{{ fullName }}</span><br>
         <button @click="changeFullName">修改全名</button>
     </div>
 </template>
