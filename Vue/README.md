@@ -142,3 +142,6 @@ npm run build
 ### 关闭语法检查
   - `eslint-disable-next-line`关闭下一行的语法检查
   - `eslint-disable` 关闭全部语法检查
+## 路由
+- 安装路由
+  - `npm i vue-router`
