@@ -6,10 +6,12 @@
     </ul>
 </template>
 
-<script setup lang="ts" name="About">
-import {useRoute, toRefs} from 'vue-router'
+<script setup lang="ts" name="Detail">
+import { useRoute } from 'vue-router'
+import { toRefs } from 'vue'
+
 let route = useRoute()
-let {query} = toRefs(route)
+let { query } = toRefs(route)
 </script>
 
 <style scoped>
