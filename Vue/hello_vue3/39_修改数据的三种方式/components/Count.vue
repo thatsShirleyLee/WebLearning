@@ -1,7 +1,7 @@
 <template>
     <div class="count">
-        <h2>当前求和为：{{ sum }}, 放大后: {{ bigSum }}</h2>
-        <h3>{{ school }}, 坐落于{{ location }}, 大写: {{ upperSchool }}</h3>
+        <h2>当前求和为：{{ countState.sum }}</h2>
+        <h3>{{ countState.school }}, 坐落于{{ countState.location }}</h3>
         <select v-model.number="n">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -17,9 +17,21 @@
     import { useCountState } from '@/store/count'
     import { storeToRefs } from 'pinia';
     let countState = useCountState()
-    const { sum, school, location, bigSum, upperSchool } = storeToRefs(countState)  // toRefs代价大，会将countState所有属性转为ref
+    // 以下两种方式都可以拿到sum
+    // console.log(countState.sum)
+    // console.log(countState.$state.sum)
     let n = ref(1)
     function add() {
+        // 第一种修改方式
+        // countState.sum += n.value
+
+        // 第二种修改方式: 适用于批量
+        /* countState.$patch({
+            sum: 888,
+            school: '尚硅谷',
+            location: '北京'
+        }) */
+        // 第三种修改方式
         countState.increment(n.value)
     }
     function minus() {
