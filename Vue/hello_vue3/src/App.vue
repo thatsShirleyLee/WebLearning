@@ -12,7 +12,7 @@
 		customRef: 创建一个自定义的 ref , 并对其依赖项目跟踪和更新触发进行逻辑控制
 	*/
 	// 使用 vue 提供的 ref 定义一个响应式数据, 数据一变页面就更新
-	let msg = ref('你好')
+	// let msg = ref('你好')
 	// 使用 useMsgRef 定义一个响应式数据且有延迟效果
 	let { msg } = useMsgRef('你好', 2000)
 </script>
