@@ -32,7 +32,7 @@ import { ref, watch } from 'vue';
     // 若要监视对象内部属性的变化，需要手动开启深度监视
     /*
         watch的第一个参数: 被监视的数据
-        watch的第二个参数: 监视的毁回调
+        watch的第二个参数: 监视的回调
         watch的第三个参数: 配置对象 (deep、immediate...)
      */
     watch(person, (newVal, preVal) => {

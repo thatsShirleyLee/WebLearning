@@ -38,7 +38,7 @@
         person.car = {c1: '雅迪', c2: '爱玛'}
     }
     // 情况四：监视上述多个数据
-    watch([() => person.name, () => person.car.c1 ], (newVal, preVal) => {
+    watch([() => person.name, () => person.car.c1], (newVal, preVal) => {
         console.log('person.name、person.car变化了', newVal, preVal);
     })
 </script>

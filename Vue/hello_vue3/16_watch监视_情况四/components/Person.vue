@@ -39,21 +39,18 @@
         person.car = {c1: '雅迪', c2: '爱玛'}
     }
     // 情况四：监视响应式对象其中一个属性，且该属性是基本类型，要写成函数形式
-    watch(() => person.name, (newVal, preVal) => {
-        console.log('person.name变化了', newVal, preVal);
-    })
-    /* // 监视响应式对象其中一个属性，且该属性是对象类型，只能监视该对象整个变化，监视不到对象的属性变化
-    watch(() => person.car, (newVal, preVal) => {
-        console.log('person.car变化了', newVal, preVal);
-    })
-    // 监视响应式对象其中一个属性，且该属性是对象类型，只能监视该对象的属性变化，监视不到对象整个变化
-    watch(person.car, (newVal, preVal) => {
-        console.log('person.car变化了', newVal, preVal);
-    }) */
-    // 监视响应式对象其中一个属性，且该属性是对象类型，要写成函数形式, 并且手动开启深度监视
+    // watch(() => person.name, (newVal, preVal) => {
+    //     console.log('person.name变化了', newVal, preVal);
+    // })
+    // 监视响应式对象其中一个属性，且该属性是对象类型，只能监视该对象整个变化，监视不到对象的属性变化
+    // watch(() => person.car, (newVal, preVal) => {
+    //     console.log('person.car变化了', newVal, preVal);
+    // })
+    // 监视响应式对象其中一个属性，且该属性是对象类型，要写成函数形式`() => person.car`, 并且手动开启深度监视
     watch(() => person.car, (newVal, preVal) => {
         console.log('person.car变化了', newVal, preVal);
     }, {deep: true})
+    // 监视多个数据: [() => person.name, () => person.car.c1 ]
 </script>
 
 <style scoped>
