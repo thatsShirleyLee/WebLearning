@@ -15,7 +15,8 @@ export const useCountState = defineStore('count', {
             location: '宏福科技园'
         }
     },
-    getters: {
+    // 用于计算和派生状态，它们可以访问 store 的状态和其他 getters。
+    getters: { 
         bigSum: state => state.sum * 10,
         upperSchool() :string {
             return this.school.toUpperCase()

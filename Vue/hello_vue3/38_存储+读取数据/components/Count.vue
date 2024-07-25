@@ -23,8 +23,8 @@
     function add() {
         // 第一种修改方式
         // countState.sum += n.value
-        
-        // 第二种修改方式: 适用于批量
+
+        // 第二种修改方式: 适用于批量,  Pinia 中的方法，用于批量更新 store 的状态，可以将新的状态合并到现有的 store 状态中，而不是替换整个状态。
         /* countState.$patch({
             sum: 888,
             school: '尚硅谷',

@@ -12,6 +12,7 @@
 <script setup lang="ts" name="App">
 	import { reactive, toRaw, markRaw } from 'vue';
 	import mockjs from 'mockjs'
+import { log } from 'console';
 	/* 
 		toRaw: 创建一个响应式对象的原始对象, 返回的对象不再是响应式的，事件的触发不会引起视图的更新
 		markRaw: 标记一个对象, 使其永远不会变成响应式的

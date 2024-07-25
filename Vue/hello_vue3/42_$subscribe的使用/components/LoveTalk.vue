@@ -15,6 +15,11 @@
     import { storeToRefs } from 'pinia';
     import { reactive } from 'vue';
     let talkState = useTalkState()
+    /* 
+    $subscribe() 是 Vue 3 的 Pinia 库中用于监听 store 更改的方法。
+    它允许你在 store 状态发生变化时执行某些操作，
+    比如日志记录、同步数据到本地存储等。
+    */
     let { talkList } = storeToRefs(talkState)
     talkState.$subscribe((mutate, state) => {
         console.log('talkList里面数据发生了变化')

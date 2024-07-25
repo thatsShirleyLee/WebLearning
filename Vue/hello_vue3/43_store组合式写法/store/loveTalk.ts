@@ -18,6 +18,7 @@ import { reactive } from "vue";
     // 真正存储数据的地方
     state() {
         return {
+            // 将 JSON 字符串解析为 JavaScript 对象
             talkList: JSON.parse(localStorage.getItem('taklList') as string) || []
         }
     }

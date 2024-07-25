@@ -18,6 +18,7 @@
     let { talkList } = storeToRefs(talkState)
     talkState.$subscribe((mutate, state) => {
         console.log('talkList里面数据发生了变化')
+        // JSON.stringify 将 JavaScript 对象或值转换为 JSON 字符串
         localStorage.setItem('talkList', JSON.stringify(talkList.value))
     })
     function getLoveTalk() {

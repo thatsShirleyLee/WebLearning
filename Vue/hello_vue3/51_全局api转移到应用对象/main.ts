@@ -25,8 +25,8 @@ app.directive('beauty',(element, {value}) => {
 // 挂载应用
 app.mount('#app')
 // 2s后卸载应用
-setTimeout(() => {
-    app.unmount()
-}, 2000)
+// setTimeout(() => {
+//     app.unmount()
+// }, 2000)
 // 安装插件
 // app.use(pinia) // app.use(router)

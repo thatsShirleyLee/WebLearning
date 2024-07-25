@@ -38,7 +38,7 @@ export default createRouter({
                     component: Detail,
                     // 第二种写法：函数写法，自己决定将什么作为props传递给路由组件
                     props(route){
-                        // console.log('@',route); //  name, params, path, query...
+                        console.log('@',route); //  name, params, path, query...
                         return route.query
                     }
                     // 第三种写法：对象写法，自己决定将什么作为props传递给路由组件
