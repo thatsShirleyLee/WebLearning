@@ -46,9 +46,9 @@
         // 3.#checkedRevBtn
         var checkedRevBtn = document.getElementById("checkedRevBtn");
         checkedRevBtn.onclick = function (){
+            checkedAllBox.checked = true;
             for(var i=0; i<items.length; i++){
                 items[i].checked = !items[i].checked;
-                checkedAllBox.checked = true;
                 if(!items[i].checked){
                     checkedAllBox.checked = false;
                 }

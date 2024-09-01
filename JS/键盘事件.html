@@ -13,11 +13,11 @@
          *  onkeydown()
          *    - 按键被按下
          *    - 如果不松手, 事件会被一直触发
-         *    - onkeydown连续触发时, 第一次核第二次之间会卡一下,后面会很快
+         *    - onkeydown连续触发时, 第一次和第二次之间会卡一下,后面会很快
          *      这个是浏览器故意设计的,防止误操作
          *  onkeyup()
          *    - 按键被松开
-         * 键盘事件一般都会绑定给一些可以获取到焦点的对象或者时document
+         * 键盘事件一般都会绑定给一些可以获取到焦点的对象或者是document
          */
         document.onkeydown = function(event) {
             event = event || window.event;

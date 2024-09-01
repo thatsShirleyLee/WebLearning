@@ -26,6 +26,13 @@
        *  3.以构造函数的形式调用时,this是新创建的那个对象
        *  4.使用call()和apply()调用时,this时指定的那个对象
        */
+        var obj = {};
+        function fun() {
+          console.log(this);
+        }
+        fun();
+        fun.call(obj);
+        fun.apply(obj);
     </script>
 </head>
 <body>
