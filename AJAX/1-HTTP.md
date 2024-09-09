@@ -24,7 +24,7 @@ HTTP (Hypertext Transport Protocol) 超文本传输协议, 规定了浏览器和
 响应行 HTTP/1.1(HTTP协议版本) 200(响应状态) OK(响应状态字符串)
 响应头 Content-Type: text/html;charser=utf-8
       Content-length: 2048
-      Content-encoding: gzi[
+      Content-encoding: gzip
 空行
 响应体 <html>
         <head>
@@ -42,7 +42,7 @@ HTTP (Hypertext Transport Protocol) 超文本传输协议, 规定了浏览器和
 * 200
 
 ## 浏览器中查看
-> F2->Network
+> F12->Network
 
   | Headers                                  | Preview      | Response |
   |------------------------------------------|--------------|----------|

@@ -6,18 +6,18 @@ app.get('/server', (request, response) => {
     // 设置响应头 (特殊响应头)
     response.setHeader('Access-Control-Allow-Origin', '*'); // 所有类型的头信息都可以接受
     // 设置响应体
-    response.send('HELLO AJAX - 2');
+    response.send('HELLO AJAX');
 });
 
-// POST 请求
-// app.post('/server', (request, response)=>{
-//     // 设置响应头 设置允许跨域
-//     response.setHeader('Access-Control-Allow-Origin', '*');
-//     // 设置运行接受特殊请求头
-//     response.setHeader('Access-Control-Allow-Headers', '*'); // 还会发OPTIONS请求
-//     // 设置响应体
-//     response.send('Index Ajax POST');
-// });
+/* // POST 请求
+app.post('/server', (request, response)=>{
+    // 设置响应头 设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    // 设置运行接受特殊请求头
+    response.setHeader('Access-Control-Allow-Headers', '*'); // 还会发OPTIONS请求
+    // 设置响应体
+    response.send('Index Ajax POST');
+}); */
 
 // 可以接受任意类型的请求 (GET POST OPTIONS TOUCH ...)
 app.all('/server', (request, response) => {
@@ -48,7 +48,7 @@ app.all('/json-server', (request, response) => {
 // 针对 IE 缓存
 app.get('/ie', (request, response) => {
     response.setHeader('Access-Control-Allow-Origin', '*');
-    response.send('HELLO IE -2zzzzzzzzzzzzz');
+    response.send('HELLO IE -2');
 });
 
 // 延时响应
@@ -73,6 +73,15 @@ app.all('/jquery-server', (request, response) => {
 
 // axios 服务
 app.all('/axios-server', (request, response) => {
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    // 设置运行接受特殊请求头
+    response.setHeader('Access-Control-Allow-Headers', '*');
+    const data = {name: '尚硅谷'};
+    response.send(JSON.stringify(data));
+});
+
+// fetch 服务
+app.all('/fetch-server', (request, response) => {
     response.setHeader('Access-Control-Allow-Origin', '*');
     // 设置运行接受特殊请求头
     response.setHeader('Access-Control-Allow-Headers', '*');
@@ -119,13 +128,13 @@ app.all('/jquery-jsonp-server', (request, response) => {
 // cors 服务
 app.all('/cors-server', (request, response) => {
     // 设置响应头
-    response.setHeader('Access-Control-Allow-Origin', '*');
-    response.setHeader('Access-Control-Allow-Header', '*');
-    response.setHeader('Access-Control-Allow-Method', '*');
+    response.setHeader('Access-Control-Allow-Origin', '*');  // 指定允许访问资源的外部域名。'*' 表示允许任何域访问（即跨域请求不受限制）
+    response.setHeader('Access-Control-Allow-Header', '*');  // 指定允许的自定义请求头。'*' 表示允许所有类型的请求头 
+    response.setHeader('Access-Control-Allow-Method', '*');  // 指定允许的 HTTP 方法。'*' 代表允许任何请求方法
     response.send("Index CORS");
 });
 
 
-app.listen(8000, () => {
-    console.log("服务已经启动, 8000端口监听中...");
+app.listen(8001, () => {
+    console.log("服务已经启动, 8001端口监听中...");
 });

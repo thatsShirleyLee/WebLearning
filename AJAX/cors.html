@@ -18,16 +18,16 @@
     const btn = document.querySelector("button");
     btn.onclick = () => {
         // 1. 创建对象
-        const x = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
         // 初始化设置
-        x.open('GET', 'http://127.0.0.1:8000/cors-server');
+        xhr.open('GET', 'http://127.0.0.1:8001/cors-server');
         // 发送
-        x.send();
+        xhr.send();
         // 绑定事件处理响应结果
-        x.onreadystatechange = () => {
-            if (x.readyState === 4) {
-                if (x.status >= 200 && x.status < 300) {
-                    console.log(x.response);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    console.log(xhr.response);
                 }
             }
         };

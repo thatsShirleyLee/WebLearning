@@ -61,12 +61,12 @@
      *  4. 响应体类型
      */
     $('button').eq(0).click(function () {
-        $.get('http://127.0.0.1:8000/jquery-server', {a: 100, b: 200}, function (data) {
+        $.get('http://127.0.0.1:8001/jquery-server', {a: 100, b: 200}, function (data) {
             console.log(data);
         }, 'json');
     });
     $('button').eq(1).click(function () {
-        $.post('http://127.0.0.1:8000/jquery-server', {a: 100, b: 200}, function (data) {
+        $.post('http://127.0.0.1:8001/jquery-server', {a: 100, b: 200}, function (data) {
             console.log(data);
         }, 'json');
     });
@@ -78,7 +78,7 @@
          */
         $.ajax({
             // url
-            url: 'http://127.0.0.1:8000/jquery-server',
+            url: 'http://127.0.0.1:8001/jquery-server',
             // 参数
             data: {a:100, b:200},
             // 请求类型

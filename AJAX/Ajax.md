@@ -27,7 +27,7 @@ name = "孙悟空"; age = 18; gender = "男";
 ### 1.3.2 AJAX 的缺点
 1. 没有浏览历史,不能回退
 2. 存在跨域问题 (同源) 
-3. SEO (Search Engining Optimizationz) 不友好
+3. SEO (Search Engining Optimization) 不友好
 ## 1.4 AJAX的使用
 ### 1.4.1 核心对象
 

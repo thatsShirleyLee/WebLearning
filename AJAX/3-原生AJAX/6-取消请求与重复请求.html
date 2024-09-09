@@ -10,18 +10,18 @@
 <script>
     // 获取元素对象
     const btns = document.querySelectorAll("button");
-    let x = null;
+    let xhr = null;
 
     let isSending = false; // 是否正在发送AJAX请求
     btns[0].onclick = () => {
-        if(isSending) x.abort(); // 如果正在发送就取消, 创建一个新的请求
-        x = new XMLHttpRequest();
+        if(isSending) xhr.abort(); // 如果正在发送就取消, 创建一个新的请求
+        xhr = new XMLHttpRequest();
         isSending = true;
-        x.open('GET', 'http://127.0.0.1:8000/delay');
-        x.send();
-        x.onreadystatechange = () => {
-            if (x.readyState === 4) {
-                if (x.status >= 200 && x.status < 300) {
+        xhr.open('GET', 'http://127.0.0.1:8001/delay');
+        xhr.send();
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300) {
                     isSending = false;
                 }
             }
@@ -29,7 +29,7 @@
     };
     // abort
     btns[1].onclick = () => {
-        x.abort();
+        xhr.abort();
     };
     /*
      * 服务响应得慢, 用户疯狂点击, 重复请求

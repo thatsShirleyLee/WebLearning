@@ -19,7 +19,7 @@
   const result = document.querySelector("#result");
   btn.addEventListener("click", () => {
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1:8000/ie?t="+Date.now()); // 每次都是不同的请求
+    xhr.open("GET", "http://127.0.0.1:8001/ie?t="+Date.now()); // 每次都是不同的请求
     xhr.send();
     xhr.onreadystatechange = () => {
         if(xhr.readyState === 4){

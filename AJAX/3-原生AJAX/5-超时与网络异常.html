@@ -35,7 +35,7 @@
         xhr.onerror = () => {
             alert("你的网络似乎出现了一些问题!");
         };
-        xhr.open("GET", "http://127.0.0.1:8000/delay"); // 每次都是不同的请求
+        xhr.open("GET", "http://127.0.0.1:8001/delay"); // 每次都是不同的请求
         xhr.send();
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4) {
