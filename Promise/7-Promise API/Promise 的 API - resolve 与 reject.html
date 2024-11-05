@@ -10,16 +10,16 @@
      * 如果传入参数为 非 Promise 对象, 则返回的结果为 Promise 对象
      * 如果传入参数为 Promise 对象, 则参数的结果决定了 resolve 的结果
      */
-    // let p1 = Promise.resolve(521);
-    // let p2 = Promise.resolve(new Promise((resolve, reject) => {
-    //     // resolve('OK');
-    //     reject('Error');
-    // }));
-    // // console.log(p1);
-    // console.log(p2);
-    // p2.catch((reason) => {
-    //     console.log(reason);
-    // });
+    /* let p1 = Promise.resolve(521);
+    let p2 = Promise.resolve(new Promise((resolve, reject) => {
+        // resolve('OK');
+        reject('Error');
+    }));
+    console.log(p1);
+    console.log(p2); 
+    p2.catch((reason) => {
+        console.log(reason);
+    });*/
     let p = Promise.reject(521);
     let p1 = Promise.reject('I love you');
     let p2 = Promise.reject(new Promise((resolve, reject) => {
