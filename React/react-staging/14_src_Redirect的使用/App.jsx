@@ -36,7 +36,7 @@ export default class App extends Component {
                                     <Route path="/atguigu/about" component={About}/>
                                     <Route path="/atguigu/home" component={Home}/>
                                     {/* 路由匹配不上时，默认重定向打开 /about */}
-                                    <Redirect to={'/about'}/>
+                                    <Redirect to={'/atguigu/about'}/>
                                 </Switch>
                             </div>
                         </div>

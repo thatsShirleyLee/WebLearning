@@ -11,8 +11,9 @@ export default class Search extends Component {
         //     error => {console.log('失败了', error)}
         // )
         // 发送请求前通知App更新状态
+        
         this.props.updateAppState({isFirst: false, isLoading: true});
-        axios.get(`http://localhost:3000/api1/search/users234?q=${keyWord}`).then( // 模拟数据，从3000->5000需要配置代理
+        axios.get(`http://localhost:3000/api1/search/users2?q=${keyWord}`).then( // 模拟数据，从3000->5000需要配置代理
             response => {
                 console.log('成功了', response.data);
                 this.props.updateAppState({isLoading: false, users: response.data.items});
